@@ -9,7 +9,7 @@
  * @author peper
  */
 public class TANK extends Campeon {
-
+    
     private int defensa; //1000 puntos = 50% de reduccion de ataque
     private int esquivar; // prob de esquivar un ataque
     private int parada; //Prob de parar un ataque
@@ -24,37 +24,45 @@ public class TANK extends Campeon {
         this.regVida = regVida;
         this.aggro = aggro;
     }
-
+    
     public int getDefensa() {
         return defensa;
     }
-
+    
     public void setDefensa(int defensa) {
         this.defensa = defensa;
     }
-
+    
     public int getEsquivar() {
         return esquivar;
     }
-
+    
     public void setEsquivar(int esquivar) {
         this.esquivar = esquivar;
     }
-
+    
     public int getParada() {
         return parada;
     }
-
+    
     public void setParada(int parada) {
         this.parada = parada;
     }
-
+    
     public int getRegVida() {
         return regVida;
     }
-
+    
     public void setRegVida(int regVida) {
         this.regVida = regVida;
+    }
+    
+    public int getAggro() {
+        return aggro;
+    }
+
+    public void setAggro(int aggro) {
+        this.aggro = aggro;
     }
 
     //HABILIDADES GENÉRICAS
@@ -67,13 +75,29 @@ public class TANK extends Campeon {
         }
     }
 
+
     //Aumentar defensa
-    public void AumentarDefensa() {
-        if (super.getHp() <= 500) {
-            defensa += 100;
+    public void AumentarDefensa() {//Si tiene menos de un 50% de los HP aumentará su defensa un 100% y si no un 50%
+        if (super.getHp() <= (super.getHp()*50)/100) {
+            int tmp= (defensa*100)/100;
+            defensa += tmp;
+            System.out.println("Defensa aumentada a "+defensa+" puntos");
         } else {
-            defensa += 50;
+            int tmp = (defensa*50)/100;
+            defensa +=tmp;
+            System.out.println("Defensa aumentada a "+defensa+" puntos");
         }
     }
 
+    //Aumentar vida
+    public void AumentarVida() {//Si tiene menos de un 25% de los HP aumentará estos en 1000% y si no un 200%
+        if (super.getHp() <= (super.getHp()*25)/100) {
+            super.setHp((super.getHp() * 500) / 100);
+            System.out.println("Vida aumentada a "+super.getHp()+" HP");
+        } else {
+            super.setHp((super.getHp() * 200) / 100);
+            System.out.println("Vida aumentada a "+super.getHp()+ " HP");
+        }
+    }
+    
 }

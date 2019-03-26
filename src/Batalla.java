@@ -19,11 +19,20 @@ public class Batalla {
         DPS Priskya = new DPS ("Range",1.00,0,0,0,"Priskya","Aire",1000,0,0,1,100,0,100,1000);
         DPS Devas = new DPS("Mele",1.00,0,0,0,"Devas","Aire",1000,0,0,1,100,0,100,1000);
         
+        // TANK---->Defensa----Esquivar----Parada-----RegVida-----Aggro----Nombre---Faccion----HP----Muertes----EXP----Nivel----Poder----MuertesEnemigas-----Golpe)
+        TANK Pocho = new TANK(1000,0,0,100,1000,"Pocho","Tierra",2000,0,0,1,100,0,50);
         System.out.println(Devas);
         Devas.Golpear(Priskya);
         System.out.println(Priskya);
         Priskya.Potenciar();
         Priskya.Golpear(Devas);
+        System.out.println(Pocho);
+        System.out.println(Pocho.getDefensa());
+        Pocho.AumentarDefensa();
+        System.out.println(Pocho.getDefensa());
+        System.out.println(Pocho.getHp());
+        Pocho.AumentarVida();
+        System.out.println(Pocho.getHp());
         
     }
     
