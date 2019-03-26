@@ -77,7 +77,7 @@ public class TANK extends Campeon {
 
     //Aumentar defensa
     public void AumentarDefensa() {//Si tiene menos de un 50% de los HP aumentará su defensa un 100% y si no un 50%
-        switch (super.getNivel()) {
+        switch (super.getNivel()) {//Los porcentajes irán aumentando un 10% y un 5% respectivamente por nivel
             case 1:
                 if (super.getHp() <= (super.getHp() * 50) / 100) {
                     int tmp = (defensa * 100) / 100;
@@ -139,21 +139,85 @@ public class TANK extends Campeon {
 
     //Aumentar vida
     public void AumentarVida() {//Si tiene menos de un 25% de los HP aumentará estos en 1000% y si no un 200%
-        if (super.getHp() <= (super.getHp() * 25) / 100) {
-            super.setHp((super.getHp() * 500) / 100);
-            System.out.println("Vida aumentada a " + super.getHp() + " HP");
-        } else {
-            super.setHp((super.getHp() * 200) / 100);
-            System.out.println("Vida aumentada a " + super.getHp() + " HP");
+        switch (super.getNivel()) {//Los porcentajes irán aumentando un 10% y un 5% respectivamente por nivel
+            case 1:
+                if (super.getHp() <= (super.getHp() * 25) / 100) {
+                    super.setHp((super.getHp() * 510) / 100);
+                    System.out.println("Vida aumentada a " + super.getHp() + " HP");
+                } else {
+                    super.setHp((super.getHp() * 205) / 100);
+                    System.out.println("Vida aumentada a " + super.getHp() + " HP");
+                }
+                break;
+            case 2:
+                if (super.getHp() <= (super.getHp() * 25) / 100) {
+                    super.setHp((super.getHp() * 520) / 100);
+                    System.out.println("Vida aumentada a " + super.getHp() + " HP");
+                } else {
+                    super.setHp((super.getHp() * 210) / 100);
+                    System.out.println("Vida aumentada a " + super.getHp() + " HP");
+                }
+                break;
+            case 3:
+                if (super.getHp() <= (super.getHp() * 25) / 100) {
+                    super.setHp((super.getHp() * 530) / 100);
+                    System.out.println("Vida aumentada a " + super.getHp() + " HP");
+                } else {
+                    super.setHp((super.getHp() * 215) / 100);
+                    System.out.println("Vida aumentada a " + super.getHp() + " HP");
+                }
+                break;
+            case 4:
+                if (super.getHp() <= (super.getHp() * 25) / 100) {
+                    super.setHp((super.getHp() * 540) / 100);
+                    System.out.println("Vida aumentada a " + super.getHp() + " HP");
+                } else {
+                    super.setHp((super.getHp() * 220) / 100);
+                    System.out.println("Vida aumentada a " + super.getHp() + " HP");
+                }
+                break;
+            case 5:
+                if (super.getHp() <= (super.getHp() * 25) / 100) {
+                    super.setHp((super.getHp() * 550) / 100);
+                    System.out.println("Vida aumentada a " + super.getHp() + " HP");
+                } else {
+                    super.setHp((super.getHp() * 225) / 100);
+                    System.out.println("Vida aumentada a " + super.getHp() + " HP");
+                }
+                break;
         }
+
     }
 
     //HABILIDADES LVL 2
     //Reducir Ataque
     public void ReducirGolpe(Campeon enemigo) {//Reduce el daño del atacante en un 5% del Aggro actual del tanke
-        int reduccion = enemigo.getGolpe() - ((getAggro() * 5) / 100);
-        enemigo.setGolpe(reduccion);
-        System.out.println("El daño del enemigo ha sido reducido " + reduccion + " puntos \n" + enemigo.getName() + " ahora tiene " + enemigo.getGolpe() + " puntos de golpe");
+        int reduccion;
+        switch (super.getNivel()) {
+            case 1:
+                System.out.println("Habilidad No Disponible Por Falta De Nivel");
+                break;
+            case 2:
+                reduccion = enemigo.getGolpe() - ((getAggro() * 1) / 100);
+                enemigo.setGolpe(reduccion);
+                System.out.println("El daño del enemigo ha sido reducido " + reduccion + " puntos \n" + enemigo.getName() + " ahora tiene " + enemigo.getGolpe() + " puntos de golpe");
+                break;
+            case 3:
+                reduccion = enemigo.getGolpe() - ((getAggro() * 2) / 100);
+                enemigo.setGolpe(reduccion);
+                System.out.println("El daño del enemigo ha sido reducido " + reduccion + " puntos \n" + enemigo.getName() + " ahora tiene " + enemigo.getGolpe() + " puntos de golpe");
+                break;
+            case 4:
+                reduccion = enemigo.getGolpe() - ((getAggro() * 3) / 100);
+                enemigo.setGolpe(reduccion);
+                System.out.println("El daño del enemigo ha sido reducido " + reduccion + " puntos \n" + enemigo.getName() + " ahora tiene " + enemigo.getGolpe() + " puntos de golpe");
+                break;
+            case 5:
+                reduccion = enemigo.getGolpe() - ((getAggro() * 4) / 100);
+                enemigo.setGolpe(reduccion);
+                System.out.println("El daño del enemigo ha sido reducido " + reduccion + " puntos \n" + enemigo.getName() + " ahora tiene " + enemigo.getGolpe() + " puntos de golpe");
+                break;
+        }
     }
 
 }
