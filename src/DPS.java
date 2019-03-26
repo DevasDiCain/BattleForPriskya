@@ -67,6 +67,12 @@ public class DPS extends Campeon {
         this.penetracionArmadura = penetracionArmadura;
     }
 
+
+    public String infoDPS() {
+        return "DPS/INFO \n------------" + "\n Tipo=" + tipoGolpe + "\n Celeridad=" + celeridad+" Puntos" + "\n DañoCritico=" + dañoCritico+" Puntos" + "\n ProbCritico=" + probCritico+" Puntos" + "\n PenetracionArmadura=" + penetracionArmadura+" Puntos" + "\n Energia= " + energia+" Puntos" + "\n------------";
+    }
+    
+
     //HABILIDADES GENÉRICAS
     //Potenciar
     public void Potenciar() {

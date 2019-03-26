@@ -34,6 +34,10 @@ public class Batalla {
         Pocho.AumentarVida();
         System.out.println(Pocho.getHp());
         Pocho.ReducirGolpe(Devas);
+        System.out.println("--------");
+        System.out.println(Devas);
+        System.out.println(Devas.infoDPS());
+       
         
     }
     

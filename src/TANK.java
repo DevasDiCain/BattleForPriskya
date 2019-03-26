@@ -138,7 +138,7 @@ public class TANK extends Campeon {
     }
 
     //Aumentar vida
-    public void AumentarVida() {//Si tiene menos de un 25% de los HP aumentará estos en 1000% y si no un 200%
+    public void AumentarVida() {//Si tiene menos de un 25% de los HP aumentará estos en 510% y si no un 205%
         switch (super.getNivel()) {//Los porcentajes irán aumentando un 10% y un 5% respectivamente por nivel
             case 1:
                 if (super.getHp() <= (super.getHp() * 25) / 100) {
