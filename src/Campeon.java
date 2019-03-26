@@ -21,8 +21,9 @@ public class Campeon {
     private int poder;//Cada 10 puntos de poder == +1 a todos los stats
     private int muertesEnemigas;// Bajas enemigas
     private int muertes;//Nº de veces que ha muerto
+    private int golpe;//Daño por golpe
 
-    public Campeon(String name, String faccion, int hp, int muertes, int exp, int nivel, int poder, int muertesEnemigas) {
+    public Campeon(String name, String faccion, int hp, int muertes, int exp, int nivel, int poder, int muertesEnemigas,int golpe) {
         this.name = name;
         this.faccion = faccion;
         this.hp = hp;
@@ -31,6 +32,15 @@ public class Campeon {
         this.nivel = nivel;
         this.poder = poder;
         this.muertesEnemigas = muertesEnemigas;
+        this.golpe = golpe;
+    }
+
+    public int getGolpe() {
+        return golpe;
+    }
+
+    public void setGolpe(int golpe) {
+        this.golpe = golpe;
     }
 
     public int getMuertesEnemigas() {
@@ -148,7 +158,17 @@ public class Campeon {
 
     @Override
     public String toString() {
-        return  name + "\n"+"---------------------"+"\n Faccion ------> " + faccion + "\n HP -----------> " + hp + "\n Muertes ------> " + muertes + "\n EXP ----------> " + exp + "\n Nivel --------> " + nivel + "\n Poder --------> " + poder +"\n --------------------";
+        return  name + "\n"+"---------------------"+"\n Faccion ------> " + faccion + "\n HP -----------> " + hp + "\n Muertes ------> " + muertes + "\n EXP ----------> " + exp + "\n Nivel --------> " + nivel + "\n Poder --------> " + poder +"\n Golpe --------> "+golpe+"\n --------------------";
+    }
+    
+    
+    //Métodos 
+    //Habilidades GENÉRICAS
+    
+    //Golpear
+    public void Golpear(Campeon enemigo){
+        enemigo.setHp(enemigo.getHp()-golpe);
+        System.out.println(this.name+" golpea a "+enemigo.getName()+" inflingiendole "+golpe+" puntos de vida");
     }
     
     

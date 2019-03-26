@@ -9,24 +9,22 @@
  * @author peper
  */
 public class DPS extends Campeon {
-    
-        private String tipoGolpe;//Si el DPS es a Distancia o Cuerpo a Cuerpo (Range/Mele)
-        private int alcance;//Ya sea Range o Mele, el alcance de sus ataques
-        private double celeridad;// Velocidad de golpeo. EJ: 1.00 = 1 ataque cada ronda
-        private int dañoCritico;// % de daño critico
-        private int probCritico;// prob en % de hacer un golpe critico
-        private int penetracionArmadura;// % de reduccion de armadura
-        private int golpe;//Daño por golpe
 
-    public DPS(String tipoGolpe, int alcance, double celeridad, int dañoCritico, int probCritico, int penetracionArmadura, int golpe, String name, String faccion, int hp, int muertes, int exp, int nivel, int poder, int muertesEnemigas) {
-        super(name, faccion, hp, muertes, exp, nivel, poder, muertesEnemigas);
+    private String tipoGolpe;//Si el DPS es a Distancia o Cuerpo a Cuerpo (Range/Mele)
+    private double celeridad;// Velocidad de golpeo. EJ: 1.00 = 1 ataque cada ronda
+    private int dañoCritico;// % de daño critico
+    private int probCritico;// prob en % de hacer un golpe critico
+    private int penetracionArmadura;// % de reduccion de armadura
+    private int energia; // Recurso necesario para atacar
+
+    public DPS(String tipoGolpe, double celeridad, int dañoCritico, int probCritico, int penetracionArmadura, String name, String faccion, int hp, int muertes, int exp, int nivel, int poder, int muertesEnemigas, int golpe, int energia) {
+        super(name, faccion, hp, muertes, exp, nivel, poder, muertesEnemigas, golpe);
         this.tipoGolpe = tipoGolpe;
-        this.alcance = alcance;
         this.celeridad = celeridad;
         this.dañoCritico = dañoCritico;
         this.probCritico = probCritico;
         this.penetracionArmadura = penetracionArmadura;
-        this.golpe = golpe;
+        this.energia = energia;
     }
 
     public String getTipoGolpe() {
@@ -35,14 +33,6 @@ public class DPS extends Campeon {
 
     public void setTipoGolpe(String tipoGolpe) {
         this.tipoGolpe = tipoGolpe;
-    }
-
-    public int getAlcance() {
-        return alcance;
-    }
-
-    public void setAlcance(int alcance) {
-        this.alcance = alcance;
     }
 
     public double getCeleridad() {
@@ -77,14 +67,15 @@ public class DPS extends Campeon {
         this.penetracionArmadura = penetracionArmadura;
     }
 
-    public int getGolpe() {
-        return golpe;
+    //HABILIDADES GENÉRICAS
+    //Potenciar
+    public void Potenciar() {
+        if (energia > 100) {
+            super.setGolpe(super.getGolpe() + ((super.getPoder() * 200) / 100));
+            System.out.println("Golpe aumentado a " + super.getGolpe());
+        } else {
+            System.out.println("No hay energía suficiente");
+        }
     }
 
-    public void setGolpe(int golpe) {
-        this.golpe = golpe;
-    }
-   
-
-        
 }
