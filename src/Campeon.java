@@ -22,7 +22,7 @@ public abstract class Campeon {
     private int muertesEnemigas;// Bajas enemigas
     private int muertes;//Nº de veces que ha muerto
     private int golpe;//Daño por golpe
-    private int armadura;//Reducción por armadura --- 1000= 50%
+    private int armadura;//Reducción por armadura --- 1000= 50%de reduccion de daño
 
     public Campeon(String name, String faccion, int hp, int exp, int nivel, int poder, int muertesEnemigas, int muertes, int golpe, int armadura) {
         this.name = name;

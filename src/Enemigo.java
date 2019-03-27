@@ -98,10 +98,9 @@ public class Enemigo {
     public void generarEnemigo(String nombre) {
         Random rdn = new Random();
         this.nombre = nombre;
-        this.hp = rdn.nextInt(1500) + 1000;
+        this.hp = rdn.nextInt(2500) + 1000;
         this.defensa = rdn.nextInt(200) + 50;
         this.golpe= rdn.nextInt(600)+50;
-        this.exp= rdn.nextInt(150)+50;
         //Nivel en función de stats
         if (this.hp <= 1100 || this.defensa <= 100 || this.golpe<=100) {
             this.nivel = 1;
@@ -111,27 +110,33 @@ public class Enemigo {
             this.nivel = 3;
         } else if (this.hp <= 1400 || this.defensa <= 150|| this.golpe<=375) {
             this.nivel = 4;
-        } else if (this.hp <= 1500 || this.defensa <= 200|| this.golpe<=600) {
+        } else if (this.hp >= 1500 && this.defensa <= 200|| this.golpe<=600 && this.hp >=1500) {
             this.nivel = 5;
         }
         //Rango
         switch (this.nivel) {
             case 1:
                 this.rango = "Recluta";
+                this.exp= rdn.nextInt(100)+50;
                 break;
             case 2:
                 this.rango = "Soldado";
+                this.exp= rdn.nextInt(150)+100;
                 break;
             case 3:
                 this.rango = "Guerrero";
+                 this.exp= rdn.nextInt(200)+150;
                 break;
             case 4:
                 this.rango = "General";
+                 this.exp= rdn.nextInt(250)+200;
                 break;
             case 5:
                 this.rango = "Elite";
+                 this.exp= rdn.nextInt(350)+250;
                 break;
         }
+       
         
         
     }
