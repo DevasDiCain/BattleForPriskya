@@ -68,10 +68,42 @@ public class TANK extends Campeon {
     //HABILIDADES LVL 1
     //Generar Aggro
     public void GenerarAggro() {//Si tiene menos de 50 puntos de aggro general 100 y si tiene más 50
-        if (aggro <= 50) {
-            aggro += 100;
-        } else {
-            aggro += 50;
+        switch (super.getNivel()) {
+            case 1:
+                if (aggro <= 50) {
+                    aggro += 100;
+                } else {
+                    aggro += 50;
+                }
+                break;
+            case 2:
+                if (aggro <= 50) {
+                    aggro += 150;
+                } else {
+                    aggro += 100;
+                }
+                break;
+            case 3:
+                if (aggro <= 50) {
+                    aggro += 200;
+                } else {
+                    aggro += 150;
+                }
+                break;
+            case 4:
+                if (aggro <= 50) {
+                    aggro += 250;
+                } else {
+                    aggro += 200;
+                }
+                break;
+            case 5:
+                if (aggro <= 50) {
+                    aggro += 300;
+                } else {
+                    aggro += 250;
+                }
+                break;
         }
     }
 
