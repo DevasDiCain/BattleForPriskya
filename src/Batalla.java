@@ -15,12 +15,12 @@ public class Batalla {
      */
     public static void main(String[] args) {
        
-        // DPS---->TipoDeGolpe----Celeridad---DañoCritico----ProbCritico---Penetracion---Nombre----Faccion---HP----Muertes----EXP----Nivel----Poder----MuertesEnemigas-----Golpe----Energia
-        DPS Priskya = new DPS ("Range",1.00,0,0,0,"Priskya","Aire",1000,0,0,1,100,0,100,1000);
-        DPS Devas = new DPS("Mele",1.00,0,0,0,"Devas","Aire",1000,0,0,1,100,0,100,1000);
+        // DPS---->TipoDeGolpe----Celeridad---DañoCritico----ProbCritico---Penetracion-----Armadura---Nombre----Faccion---HP----Muertes----EXP----Nivel----Poder----MuertesEnemigas-----Golpe----Energia
+        DPS Priskya = new DPS ("Range",1.00,0,0,0,500,"Priskya","Aire",5000,0,0,1,100,0,500,1000);
+        DPS Devas = new DPS("Mele",1.00,0,0,0,500,"Devas","Aire",5000,0,0,1,100,0,500,1000);
         
-        // TANK---->Defensa----Esquivar----Parada-----RegVida-----Aggro----Nombre---Faccion----HP----Muertes----EXP----Nivel----Poder----MuertesEnemigas-----Golpe)
-        TANK Pocho = new TANK(1000,0,0,100,1000,"Pocho","Tierra",2000,0,0,1,100,0,50);
+        // TANK---->Defensa----Esquivar----Parada-----RegVida-----Aggro----Nombre---Faccion----HP----Muertes----EXP----Nivel----Poder----MuertesEnemigas-----Golpe----Armadura)
+        TANK Pocho = new TANK(1000,0,0,100,1000,"Pocho","Tierra",10000,0,0,1,100,0,50,1000);
         System.out.println(Devas);
         Devas.Golpear(Priskya);
         System.out.println(Priskya);
@@ -37,6 +37,10 @@ public class Batalla {
         System.out.println("--------");
         System.out.println(Devas);
         System.out.println(Devas.infoDPS());
+        
+         Enemigo x = new Enemigo ();
+         x.generarEnemigo("Demon");
+         System.out.println(x);
        
         
     }

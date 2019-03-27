@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author peper
  */
-public class Campeon {
+public abstract class Campeon {
     
     private String name;
     private String faccion;
@@ -22,18 +22,22 @@ public class Campeon {
     private int muertesEnemigas;// Bajas enemigas
     private int muertes;//Nº de veces que ha muerto
     private int golpe;//Daño por golpe
+    private int armadura;//Reducción por armadura --- 1000= 50%
 
-    public Campeon(String name, String faccion, int hp, int muertes, int exp, int nivel, int poder, int muertesEnemigas,int golpe) {
+    public Campeon(String name, String faccion, int hp, int exp, int nivel, int poder, int muertesEnemigas, int muertes, int golpe, int armadura) {
         this.name = name;
         this.faccion = faccion;
         this.hp = hp;
-        this.muertes = muertes;
         this.exp = exp;
         this.nivel = nivel;
         this.poder = poder;
         this.muertesEnemigas = muertesEnemigas;
+        this.muertes = muertes;
         this.golpe = golpe;
+        this.armadura = armadura;
     }
+
+    
 
     public int getGolpe() {
         return golpe;
@@ -107,6 +111,15 @@ public class Campeon {
         this.poder = poder;
     }
 
+    public int getArmadura() {
+        return armadura;
+    }
+
+    public void setArmadura(int armadura) {
+        this.armadura = armadura;
+    }
+    
+
     @Override
     public int hashCode() {
         int hash = 3;
@@ -158,18 +171,16 @@ public class Campeon {
 
     @Override
     public String toString() {
-        return  name + "\n"+"---------------------"+"\n Faccion ------> " + faccion + "\n HP -----------> " + hp + "\n Muertes ------> " + muertes + "\n EXP ----------> " + exp + "\n Nivel --------> " + nivel + "\n Poder --------> " + poder +"\n Golpe --------> "+golpe+"\n --------------------";
+        return  name + "\n"+"---------------------"+"\n Faccion ------> " + faccion + "\n HP -----------> " + hp + "\n Muertes ------> " + muertes + "\n EXP ----------> " + exp + "\n Nivel --------> " + nivel + "\n Poder --------> " + poder +"\n Golpe --------> "+golpe+" puntos \n Armadura------> "+armadura+" puntos \n --------------------";
     }
     
     
     //Métodos 
     //Habilidades GENÉRICAS
     
-    //Golpear
-    public void Golpear(Campeon enemigo){
-        enemigo.setHp(enemigo.getHp()-golpe);
-        System.out.println(this.name+" golpea a "+enemigo.getName()+" inflingiendole "+golpe+" puntos de vida");
-    }
+    //Golpear a Campeon
+    public abstract void Golpear(Campeon enemigo);
     
-    
+    //Golpear a Enemigo
+    public abstract void GolpearMOB(Enemigo enemigo);
 }

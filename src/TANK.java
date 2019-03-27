@@ -10,20 +10,22 @@
  */
 public class TANK extends Campeon {
 
-    private int defensa; //1000 puntos = 50% de reduccion de ataque
+    private int defensa; //100puntos = 50 armadura
     private int esquivar; // prob de esquivar un ataque
     private int parada; //Prob de parar un ataque
     private int regVida;// Puntos de vida regenerados por turno
     private int aggro;// Recurso de los tankes. Si tienen más de 100 puntos de Aggro no se podrá atacar a otro campeón que no sea el. Cada golpe resta 50 puntos de Aggro
 
-    public TANK(int defensa, int esquivar, int parada, int regVida, int aggro, String name, String faccion, int hp, int muertes, int exp, int nivel, int poder, int muertesEnemigas, int golpe) {
-        super(name, faccion, hp, muertes, exp, nivel, poder, muertesEnemigas, golpe);
+    public TANK(int defensa, int esquivar, int parada, int regVida, int aggro, String name, String faccion, int hp, int exp, int nivel, int poder, int muertesEnemigas, int muertes, int golpe, int armadura) {
+        super(name, faccion, hp, exp, nivel, poder, muertesEnemigas, muertes, golpe, armadura);
         this.defensa = defensa;
         this.esquivar = esquivar;
         this.parada = parada;
         this.regVida = regVida;
         this.aggro = aggro;
     }
+
+    
 
     public int getDefensa() {
         return defensa;
@@ -250,6 +252,22 @@ public class TANK extends Campeon {
                 System.out.println("El daño del enemigo ha sido reducido " + reduccion + " puntos \n" + enemigo.getName() + " ahora tiene " + enemigo.getGolpe() + " puntos de golpe");
                 break;
         }
+    }
+    
+    //Poliformismo
+    @Override
+    public void Golpear(Campeon enemigo){//Se reduce el golpe en función de la armadura del enemigo 
+    enemigo.setHp(enemigo.getHp()-(super.getGolpe()-(enemigo.getArmadura()*20/100)));//Tankes se ven afectados por un 20% de la armadura
+    aggro+=50;
+        System.out.println(super.getName()+" golpea a "+enemigo.getName()+" inflingiendole "+super.getGolpe()+" puntos de vida");
+        System.out.println(super.getName()+" obtiene "+50+" puntos de aggro");
+    }
+    @Override
+    public void GolpearMOB(Enemigo enemigo) {
+        int tmp = (super.getGolpe() - (enemigo.getDefensa() * 20) / 100);
+        enemigo.setHp(enemigo.getHp() - tmp);
+        System.out.println(super.getName() + " golpea a " + enemigo.getNombre() + " inflingiendole " + tmp + " puntos de vida");
+        System.out.println(super.getName()+" obtiene "+50+" puntos de aggro");
     }
 
 }

@@ -20,6 +20,7 @@ public class Enemigo {
     private int nivel;//Influirá en los atributos hp/defensa/golpe
     private int exp;//Experiencia que concede al morir
 
+    public Enemigo(){};
     public Enemigo(String nombre, String rango, int hp, int defensa, int golpe, int nivel, int exp) {
         this.nombre = nombre;
         this.rango = rango;
@@ -86,6 +87,12 @@ public class Enemigo {
         this.exp = exp;
     }
 
+    @Override
+    public String toString() {
+        return "Enemigo("+ nombre + ")\n ---------- \n Rango----> " + rango + "\n Hp-------> " + hp + " puntos \n Defensa--> " + defensa + " puntos \n Golpe----> " + golpe + " puntos \n Nivel----> " + nivel + "\n Exp------> " + exp + " puntos";
+    }
+    
+
     //Métodos
     //Generar Enemigo Aleatorio
     public void generarEnemigo(String nombre) {
@@ -93,16 +100,18 @@ public class Enemigo {
         this.nombre = nombre;
         this.hp = rdn.nextInt(1500) + 1000;
         this.defensa = rdn.nextInt(200) + 50;
+        this.golpe= rdn.nextInt(600)+50;
+        this.exp= rdn.nextInt(150)+50;
         //Nivel en función de stats
-        if (this.hp <= 1100 || this.defensa <= 100) {
+        if (this.hp <= 1100 || this.defensa <= 100 || this.golpe<=100) {
             this.nivel = 1;
-        } else if (this.hp <= 1200 || this.defensa <= 130) {
+        } else if (this.hp <= 1200 || this.defensa <= 130|| this.golpe<=125) {
             this.nivel = 2;
-        } else if (this.hp <= 1300 || this.defensa <= 140) {
+        } else if (this.hp <= 1300 || this.defensa <= 140|| this.golpe<=250) {
             this.nivel = 3;
-        } else if (this.hp <= 1400 || this.defensa <= 150) {
+        } else if (this.hp <= 1400 || this.defensa <= 150|| this.golpe<=375) {
             this.nivel = 4;
-        } else if (this.hp <= 1500 || this.defensa <= 200) {
+        } else if (this.hp <= 1500 || this.defensa <= 200|| this.golpe<=600) {
             this.nivel = 5;
         }
         //Rango
@@ -123,6 +132,14 @@ public class Enemigo {
                 this.rango = "Elite";
                 break;
         }
-
+        
+        
+    }
+    
+    //Golpear enemigo
+    public void Golpear(Campeon enemigo){
+        int tmp = golpe-((enemigo.getArmadura()*1)/100);
+        enemigo.setHp(enemigo.getHp()-tmp);
+        System.out.println(nombre+" ha golpeado a "+enemigo.getName()+" realizandole "+tmp+" puntos de daño.");
     }
 }
