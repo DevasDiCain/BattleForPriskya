@@ -183,4 +183,7 @@ public abstract class Campeon {
     
     //Golpear a Enemigo
     public abstract void GolpearMOB(Enemigo enemigo);
+    
+    //Matar al enemigo (Otorga exp y Sube de nivel si cumple los requisitos)
+    public abstract void MatarMOB(Enemigo enemigo);
 }

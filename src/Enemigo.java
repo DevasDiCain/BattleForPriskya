@@ -117,23 +117,23 @@ public class Enemigo {
         switch (this.nivel) {
             case 1:
                 this.rango = "Recluta";
-                this.exp= rdn.nextInt(100)+50;
+                this.exp= rdn.nextInt(200)+100;
                 break;
             case 2:
                 this.rango = "Soldado";
-                this.exp= rdn.nextInt(150)+100;
+                this.exp= rdn.nextInt(400)+200;
                 break;
             case 3:
                 this.rango = "Guerrero";
-                 this.exp= rdn.nextInt(200)+150;
+                 this.exp= rdn.nextInt(600)+300;
                 break;
             case 4:
                 this.rango = "General";
-                 this.exp= rdn.nextInt(250)+200;
+                 this.exp= rdn.nextInt(800)+400;
                 break;
             case 5:
                 this.rango = "Elite";
-                 this.exp= rdn.nextInt(350)+250;
+                 this.exp= rdn.nextInt(1000)+500;
                 break;
         }
        

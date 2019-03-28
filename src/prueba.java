@@ -23,33 +23,39 @@ public class prueba {
         //Generamos enemigo
         Enemigo demonio = new Enemigo();
         demonio.generarEnemigo("Demonio");
-        System.out.println(demonio);
-        System.out.println("----------");
+ 
         
         //Enfrentamos a Devas con el Demonio
         System.out.println(Devas);
         System.out.println(demonio);
+        System.out.println("-----------------------------------------------------------------------------");
+        do{
         ////Primer turno -
         System.out.println("Primer Turno");
         Devas.GolpearMOB(demonio);
         demonio.Golpear(Devas);
-        
+            System.out.println("------------------------------------------------------------------------------------");
         System.out.println(Devas);
         System.out.println(demonio);
         
         //Segundo Turno
         Devas.Potenciar();
         demonio.Golpear(Devas);
-        
+        System.out.println("------------------------------------------------------------------------------------");
         System.out.println(Devas);
         System.out.println(demonio);
         
         //Tercer turno
         Devas.GolpearMOB(demonio);
         demonio.Golpear(Devas);
-        
+        System.out.println("------------------------------------------------------------------------------------");
         System.out.println(Devas);
         System.out.println(demonio);
+        }while(demonio.getHp()>=0);
+        //Demonio muere y otorga exp a Devas
+        Devas.MatarMOB(demonio);
+        System.out.println(Devas);
+        //La exp otorgada 
         
         
     }
