@@ -73,7 +73,7 @@ public class DPS extends Campeon {
 
     //HABILIDADES GENÉRICAS
     //Potenciar
-    public void Potenciar() {
+    public int Potenciar() {
         int tmp = ((super.getGolpe() * 50) / 100);
         if (energia > 100) {
             super.setGolpe(super.getGolpe() + tmp);
@@ -81,6 +81,7 @@ public class DPS extends Campeon {
         } else {
             System.out.println("No hay energía suficiente");
         }
+        return tmp;
     }
 
     //Poliformismo
@@ -89,6 +90,9 @@ public class DPS extends Campeon {
         int tmp = (super.getGolpe() - (enemigo.getArmadura() * 10) / 100);
         enemigo.setHp(enemigo.getHp() - tmp);
         System.out.println(super.getName() + " golpea a " + enemigo.getName() + " inflingiendole " + tmp + " puntos de vida");
+        if(super.getGolpe()>1000){System.out.println("Efectos de Potenciar desvaneciedose");
+        super.setGolpe(super.getGolpe()-Potenciar());
+        }
     }
 
     @Override
@@ -96,6 +100,9 @@ public class DPS extends Campeon {
         int tmp = (super.getGolpe() - (enemigo.getDefensa() * 10) / 100);
         enemigo.setHp(enemigo.getHp() - tmp);
         System.out.println(super.getName() + " golpea a " + enemigo.getNombre() + " inflingiendole " + tmp + " puntos de vida");
+        if(super.getGolpe()>1000){System.out.println("Efectos de Potenciar desvaneciedose");
+        super.setGolpe(super.getGolpe()-Potenciar());
+        }
     }
 
     //Matar al enemigo (Otorga exp y Sube de nivel si cumple los requisitos)
