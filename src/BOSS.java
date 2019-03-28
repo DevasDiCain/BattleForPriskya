@@ -40,12 +40,13 @@ public class BOSS extends Enemigo {
         
     
     //Métodos heredados
-    public void generarEnemigo(String nombre) {//Adaptado al BOSS
+    public void generarEnemigo(String nombre) {//Creacion de BOSS con atributos específicos
         Random rdn = new Random();
         super.setNombre(nombre);
         super.setHp(rdn.nextInt(10000) + 5000);
         super.setDefensa(rdn.nextInt(1500) + 500);
         super.setGolpe(rdn.nextInt(1000)+500);
+        rage=0;
         //Nivel en función de stats
         if (super.getHp() <= 6000 || super.getDefensa() <= 600 || super.getGolpe()<=600) {
             super.setNivel(1);
@@ -61,28 +62,29 @@ public class BOSS extends Enemigo {
         //Rango
         switch (super.getNivel()) {
             case 1:
-                super.setNombre("Recluta");
-                super.setExp(rdn.nextInt(200)+100);
+                super.setNombre("Normal");
+                super.setExp(rdn.nextInt(400)+100);
                 break;
             case 2:
-                super.setNombre("Soldado");
-                super.setExp(rdn.nextInt(400)+200);
+                super.setNombre("Heroico");
+                super.setExp(rdn.nextInt(600)+200);
                 break;
             case 3:
-                super.setRango("Guerrero");
-                super.setExp(rdn.nextInt(600)+300);
+                super.setRango("Mitico");
+                super.setExp(rdn.nextInt(800)+300);
                 break;
             case 4:
-                super.setNombre("General");
-                super.setExp(rdn.nextInt(800)+400);
+                super.setNombre("Mitico+");
+                super.setExp(rdn.nextInt(1000)+400);
                 break;
             case 5:
-                super.setNombre("Elite");
-                super.setExp(rdn.nextInt(1000)+500);
+                super.setNombre("Mitico++");
+                super.setExp(rdn.nextInt(1500)+500);
                 break;
         }
        
         
         
     }
+    
 }
