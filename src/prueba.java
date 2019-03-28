@@ -26,32 +26,44 @@ public class prueba {
  
         
         //Enfrentamos a Devas con el Demonio
+        System.out.println("--------------CAMPEON---------------");
         System.out.println(Devas);
+        System.out.println("-------------ENEMIGO-----------------");
         System.out.println(demonio);
         System.out.println("-----------------------------------------------------------------------------");
-        do{
+        
+        while(demonio.getHp()>=0){
         ////Primer turno -
-        System.out.println("Primer Turno");
+        System.out.println("PRIMER TURNO");
         Devas.GolpearMOB(demonio);
+            System.out.println("-  -  -");
         demonio.Golpear(Devas);
             System.out.println("------------------------------------------------------------------------------------");
+       System.out.println("--------------CAMPEON---------------");
         System.out.println(Devas);
+        System.out.println("-------------ENEMIGO-----------------");
         System.out.println(demonio);
+        System.out.println("-----------------------------------------------------------------------------");
         
         //Segundo Turno
         Devas.Potenciar();
         demonio.Golpear(Devas);
         System.out.println("------------------------------------------------------------------------------------");
+        System.out.println("--------------CAMPEON---------------");
         System.out.println(Devas);
+        System.out.println("-------------ENEMIGO-----------------");
         System.out.println(demonio);
-        
+        System.out.println("-----------------------------------------------------------------------------");
         //Tercer turno
         Devas.GolpearMOB(demonio);
         demonio.Golpear(Devas);
         System.out.println("------------------------------------------------------------------------------------");
+        System.out.println("--------------CAMPEON---------------");
         System.out.println(Devas);
+        System.out.println("-------------ENEMIGO-----------------");
         System.out.println(demonio);
-        }while(demonio.getHp()>=0);
+        System.out.println("-----------------------------------------------------------------------------");
+        }
         //Demonio muere y otorga exp a Devas
         Devas.MatarMOB(demonio);
         System.out.println(Devas);

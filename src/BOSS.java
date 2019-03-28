@@ -86,5 +86,16 @@ public class BOSS extends Enemigo {
         
         
     }
+    public void Rabiar(){//Cuando el contador de rabia llega a 100, el boss entra en RABIAR
+        if(rage == 100){
+            super.setHp(super.getHp()+1000);
+            super.setDefensa(super.getDefensa()+200);
+            super.setGolpe(super.getGolpe()+200);
+            this.rage=0;
+            super.setRango("RABIAR");
+            System.out.println("!!!!!!Cuidado!!!!!!!");
+            System.out.println(super.getNombre()+" a entrado en RABIAR");
+        }else {System.out.println("El boss no tiene la rabia suficiente");}
+    }
     
 }

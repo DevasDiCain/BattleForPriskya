@@ -84,7 +84,7 @@ public class DPS extends Campeon {
         return tmp;
     }
 
-    //Poliformismo
+    //Polimorfismo
     @Override
     public void Golpear(Campeon enemigo) {//DPS golpear se ve afectado por el 10% de la armadura enemiga
         int tmp = (super.getGolpe() - (enemigo.getArmadura() * 10) / 100);
@@ -114,13 +114,16 @@ public class DPS extends Campeon {
             if (super.getExp() >= 100 && super.getExp() < 200) {
                 super.setNivel(2);
                 System.out.println("Enhorabuena has subido al nivel " + super.getNivel());
+                System.out.println("------------");
                 super.setGolpe(super.getGolpe() + 100);
                 super.setHp(super.getHp() + 300);
                 super.setMuertes(super.getMuertes() + 1);
                 super.setArmadura(super.getArmadura()+100);
-                System.out.println("Se ha aumentado el golpe en 100 puntos");
-                System.out.println("Se ha aumentado los HP en 300 puntos");
-                System.out.println("Se ha aumentado la armadura en 100 puntos");
+                System.out.println("I-------------------------------------------I");
+                System.out.println("I  Se ha aumentado el golpe en 100 puntos   I");
+                System.out.println("I  Se ha aumentado los HP en 300 puntos     I");
+                System.out.println("I  Se ha aumentado la armadura en 100 puntosI");
+                System.out.println("I-------------------------------------------I");
             } else if (super.getExp() >= 200 && super.getExp() < 400) {
                 super.setNivel(3);
                 System.out.println("Enhorabuena has subido al nivel " + super.getNivel());
