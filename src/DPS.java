@@ -117,24 +117,40 @@ public class DPS extends Campeon {
                 super.setGolpe(super.getGolpe() + 100);
                 super.setHp(super.getHp() + 300);
                 super.setMuertes(super.getMuertes() + 1);
+                super.setArmadura(super.getArmadura()+100);
+                System.out.println("Se ha aumentado el golpe en 100 puntos");
+                System.out.println("Se ha aumentado los HP en 300 puntos");
+                System.out.println("Se ha aumentado la armadura en 100 puntos");
             } else if (super.getExp() >= 200 && super.getExp() < 400) {
                 super.setNivel(3);
                 System.out.println("Enhorabuena has subido al nivel " + super.getNivel());
                 super.setGolpe(super.getGolpe() + 100);
                 super.setHp(super.getHp() + 300);
                 super.setMuertes(super.getMuertes() + 1);
+                super.setArmadura(super.getArmadura()+200);
+                  System.out.println("Se ha aumentado el golpe en 100 puntos");
+                System.out.println("Se ha aumentado los HP en 300 puntos");
+                System.out.println("Se ha aumentado la armadura en 200 puntos");
             } else if (super.getExp() >= 400 && super.getExp() < 700) {
                 super.setNivel(4);
                 System.out.println("Enhorabuena has subido al nivel " + super.getNivel());
                 super.setGolpe(super.getGolpe() + 100);
                 super.setHp(super.getHp() + 300);
                 super.setMuertes(super.getMuertes() + 1);
+                super.setArmadura(super.getArmadura()+300);
+                  System.out.println("Se ha aumentado el golpe en 100 puntos");
+                System.out.println("Se ha aumentado los HP en 300 puntos");
+                System.out.println("Se ha aumentado la armadura en 300 puntos");
             } else if (super.getExp() >= 700 && super.getExp() < 1100) {
                 super.setNivel(5);
                 System.out.println("Enhorabuena has subido al nivel " + super.getNivel());
                 super.setGolpe(super.getGolpe() + 150);
                 super.setHp(super.getHp() + 400);
                 super.setMuertes(super.getMuertes() + 1);
+                super.setArmadura(super.getArmadura()+400);
+                  System.out.println("Se ha aumentado el golpe en 150 puntos");
+                System.out.println("Se ha aumentado los HP en 400 puntos");
+                System.out.println("Se ha aumentado la armadura en 400 puntos");
             } else {
                 System.out.println(super.getName() + " recibe " + enemigo.getExp() + " puntos de EXP ");
             }
