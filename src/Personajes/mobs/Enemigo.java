@@ -1,4 +1,8 @@
+package Personajes.mobs;
 
+
+import Personajes.mobs.Campeon;
+import java.text.DecimalFormat;
 import java.util.Random;
 
 /*
@@ -19,9 +23,11 @@ public class Enemigo {
     private int golpe;
     private int nivel;//Influirá en los atributos hp/defensa/golpe
     private int exp;//Experiencia que concede al morir
+    private double celeridad;// Velocidad de golpeo. EJ: 1.00 = 1 ataque cada ronda
 
     public Enemigo(){};
-    public Enemigo(String nombre, String rango, int hp, int defensa, int golpe, int nivel, int exp) {
+
+    public Enemigo(String nombre, String rango, int hp, int defensa, int golpe, int nivel, int exp, double celeridad) {
         this.nombre = nombre;
         this.rango = rango;
         this.hp = hp;
@@ -29,7 +35,17 @@ public class Enemigo {
         this.golpe = golpe;
         this.nivel = nivel;
         this.exp = exp;
+        this.celeridad = celeridad;
     }
+
+    public double getCeleridad() {
+        return celeridad;
+    }
+
+    public void setCeleridad(double celeridad) {
+        this.celeridad = celeridad;
+    }
+  
 
     public String getNombre() {
         return nombre;
@@ -89,18 +105,21 @@ public class Enemigo {
 
     @Override
     public String toString() {
-        return "Enemigo("+ nombre + ")\n ---------- \n Rango----> " + rango + "\n Hp-------> " + hp + " puntos \n Defensa--> " + defensa + " puntos \n Golpe----> " + golpe + " puntos \n Nivel----> " + nivel + "\n Exp------> " + exp + " puntos";
+        DecimalFormat df = new DecimalFormat("0.00");
+        return "Enemigo("+ nombre + ")\n ---------- \n Rango----> " + rango + "\n Hp-------> " + hp + " puntos \n Defensa--> " + defensa + " puntos \n Golpe----> " + golpe + " puntos \n Nivel----> " + nivel + "\n Exp------> " + exp + " puntos \n Celeridad--> "+df.format(celeridad)+" puntos";
     }
     
 
     //Métodos
     //Generar Enemigo Aleatorio
-    public void generarEnemigo(String nombre) {
+    public void generarEnemigo(String nombre) {   
         Random rdn = new Random();
         this.nombre = nombre;
         this.hp = rdn.nextInt(2500) + 1000;
         this.defensa = rdn.nextInt(200) + 50;
         this.golpe= rdn.nextInt(600)+50;
+        double alea=rdn.nextDouble();//nextDouble solo genera un numero comprendido entre 0.00 y 1.00
+        this.celeridad = rdn.nextDouble()+alea;//Por lo tanto generamos dos numeros comprendidos entre ese rango y los sumamos
         //Nivel en función de stats
         if (this.hp <= 1100 || this.defensa <= 100 || this.golpe<=100) {
             this.nivel = 1;

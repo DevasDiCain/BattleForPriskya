@@ -1,3 +1,8 @@
+
+import Personajes.mobs.TANK;
+import Personajes.mobs.Enemigo;
+import Personajes.mobs.DPS;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,12 +16,12 @@
 public class prueba {
     public static void main(String[] args) {
          
-    // DPS---->TipoDeGolpe----Celeridad---DañoCritico----ProbCritico---Penetracion-----Armadura---Nombre----Faccion---HP----Muertes----EXP----Nivel----Poder----MuertesEnemigas-----Golpe----Energia
-        DPS Priskya = new DPS ("Range",1.00,0,0,0,500,"Priskya","Aire",5000,0,0,1,100,0,500,1000);
-        DPS Devas = new DPS("Mele",1.00,0,0,0,500,"Devas","Aire",5000,0,0,1,100,0,500,1000);
+    // DPS---->TipoDeGolpe-------DañoCritico----ProbCritico---Penetracion-----Armadura---Nombre----Faccion---HP----Muertes----EXP----Nivel----Poder----MuertesEnemigas-----Golpe----Energia---Celeridad
+        DPS Priskya = new DPS ("Range",0,0,0,500,"Priskya","Aire",5000,0,0,1,100,0,500,1000,1.00);
+        DPS Devas = new DPS("Mele",0,0,0,500,"Devas","Aire",5000,0,0,1,100,0,500,1000,1.00);
         
-        // TANK---->Defensa----Esquivar----Parada-----RegVida-----Aggro----Nombre---Faccion----HP----Muertes----EXP----Nivel----Poder----MuertesEnemigas-----Golpe----Armadura)
-        TANK Pocho = new TANK(1000,0,0,100,1000,"Pocho","Tierra",10000,0,0,1,100,0,50,1000);
+        // TANK---->Defensa----Esquivar----Parada-----RegVida-----Aggro----Nombre---Faccion----HP----Muertes----EXP----Nivel----Poder----MuertesEnemigas-----Golpe----Armadura---Celeridad)
+        TANK Pocho = new TANK(1000,0,0,100,1000,"Pocho","Tierra",10000,0,0,1,100,0,50,1000,1.00);
         
         //Primer enfrentamiento
         

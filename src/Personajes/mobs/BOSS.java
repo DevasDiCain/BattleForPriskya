@@ -1,4 +1,9 @@
+package Personajes.mobs;
 
+
+import Personajes.mobs.Enemigo;
+import Personajes.mobs.Campeon;
+import java.text.DecimalFormat;
 import java.util.Random;
 
 /*
@@ -16,11 +21,18 @@ public class BOSS extends Enemigo {
         private int rage;//Contador para entrar en Rabiar
         private int objeto;//Nº de objeto que da si muere
 
-    public BOSS(int rage, int objeto, String nombre, String rango, int hp, int defensa, int golpe, int nivel, int exp) {
-        super(nombre, rango, hp, defensa, golpe, nivel, exp);
+    public BOSS(int rage, int objeto) {
         this.rage = rage;
         this.objeto = objeto;
     }
+
+    public BOSS(int rage, int objeto, String nombre, String rango, int hp, int defensa, int golpe, int nivel, int exp, double celeridad) {
+        super(nombre, rango, hp, defensa, golpe, nivel, exp, celeridad);
+        this.rage = rage;
+        this.objeto = objeto;
+    }
+
+   
 
     public int getRage() {
         return rage;
@@ -37,6 +49,13 @@ public class BOSS extends Enemigo {
     public void setObjeto(int objeto) {
         this.objeto = objeto;
     }
+
+    @Override
+    public String toString() {
+        DecimalFormat df = new DecimalFormat("0.00");
+        return "Enemigo("+ super.getNombre()+ ")\n ---------- \n Rango----> " + super.getRango() + "\n Hp-------> " + super.getHp() + " puntos \n Defensa--> " + super.getDefensa() + " puntos \n Golpe----> " + super.getGolpe() + " puntos \n Nivel----> " +super.getNivel()+ "\n Exp------> " + super.getExp() + " puntos \n Celeridad--> "+df.format(super.getCeleridad())+" puntos";
+    }
+    
         
     
     //Métodos heredados
@@ -47,6 +66,8 @@ public class BOSS extends Enemigo {
         super.setDefensa(rdn.nextInt(1500) + 500);
         super.setGolpe(rdn.nextInt(1000)+500);
         rage=0;
+        double alea=rdn.nextDouble();//nextDouble solo genera un numero comprendido entre 0.00 y 1.00
+        super.setCeleridad(rdn.nextDouble()+alea);//Por lo tanto generamos dos numeros comprendidos entre ese rango y los sumamos
         //Nivel en función de stats
         if (super.getHp() <= 6000 || super.getDefensa() <= 600 || super.getGolpe()<=600) {
             super.setNivel(1);

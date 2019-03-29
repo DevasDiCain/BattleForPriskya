@@ -1,4 +1,7 @@
+package Personajes.mobs;
 
+
+import java.text.DecimalFormat;
 import java.util.Objects;
 
 /*
@@ -23,8 +26,9 @@ public abstract class Campeon {
     private int muertes;//Nº de veces que ha muerto
     private int golpe;//Daño por golpe
     private int armadura;//Reducción por armadura --- 1000= 50%de reduccion de daño
+    private double celeridad;// Velocidad de golpeo. EJ: 1.00 = 1 ataque cada ronda
 
-    public Campeon(String name, String faccion, int hp, int exp, int nivel, int poder, int muertesEnemigas, int muertes, int golpe, int armadura) {
+    public Campeon(String name, String faccion, int hp, int exp, int nivel, int poder, int muertesEnemigas, int muertes, int golpe, int armadura, double celeridad) {
         this.name = name;
         this.faccion = faccion;
         this.hp = hp;
@@ -35,8 +39,18 @@ public abstract class Campeon {
         this.muertes = muertes;
         this.golpe = golpe;
         this.armadura = armadura;
+        this.celeridad = celeridad;
     }
 
+    public double getCeleridad() {
+        return celeridad;
+    }
+
+    public void setCeleridad(double celeridad) {
+        this.celeridad = celeridad;
+    }
+
+  
     
 
     public int getGolpe() {
@@ -171,7 +185,8 @@ public abstract class Campeon {
 
     @Override
     public String toString() {
-        return  name + "\n"+"---------------------"+"\n Faccion ------> " + faccion + "\n HP -----------> " + hp + "\n Muertes ------> " + muertes + "\n EXP ----------> " + exp + "\n Nivel --------> " + nivel + "\n Poder --------> " + poder +"\n Golpe --------> "+golpe+" puntos \n Armadura------> "+armadura+" puntos \n --------------------";
+        DecimalFormat df = new DecimalFormat("0.00");
+        return  name + "\n"+"---------------------"+"\n Faccion ------> " + faccion + "\n HP -----------> " + hp + "\n Muertes ------> " + muertes + "\n EXP ----------> " + exp + "\n Nivel --------> " + nivel + "\n Poder --------> " + poder +"\n Golpe --------> "+golpe+" puntos \n Armadura------> "+armadura+" puntos \n Celeridad---> "+df.format(celeridad)+"\n --------------------";
     }
     
     

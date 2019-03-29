@@ -1,3 +1,5 @@
+package Personajes.mobs;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,21 +13,22 @@
 public class DPS extends Campeon {
 
     private String tipoGolpe;//Si el DPS es a Distancia o Cuerpo a Cuerpo (Range/Mele)
-    private double celeridad;// Velocidad de golpeo. EJ: 1.00 = 1 ataque cada ronda
     private int dañoCritico;// % de daño critico
     private int probCritico;// prob en % de hacer un golpe critico
     private int penetracionArmadura;// % de reduccion de armadura
     private int energia; // Recurso necesario para atacar
 
-    public DPS(String tipoGolpe, double celeridad, int dañoCritico, int probCritico, int penetracionArmadura, int energia, String name, String faccion, int hp, int exp, int nivel, int poder, int muertesEnemigas, int muertes, int golpe, int armadura) {
-        super(name, faccion, hp, exp, nivel, poder, muertesEnemigas, muertes, golpe, armadura);
+    public DPS(String tipoGolpe, int dañoCritico, int probCritico, int penetracionArmadura, int energia, String name, String faccion, int hp, int exp, int nivel, int poder, int muertesEnemigas, int muertes, int golpe, int armadura, double celeridad) {
+        super(name, faccion, hp, exp, nivel, poder, muertesEnemigas, muertes, golpe, armadura, celeridad);
         this.tipoGolpe = tipoGolpe;
-        this.celeridad = celeridad;
         this.dañoCritico = dañoCritico;
         this.probCritico = probCritico;
         this.penetracionArmadura = penetracionArmadura;
         this.energia = energia;
     }
+
+   
+
 
     public String getTipoGolpe() {
         return tipoGolpe;
@@ -35,13 +38,7 @@ public class DPS extends Campeon {
         this.tipoGolpe = tipoGolpe;
     }
 
-    public double getCeleridad() {
-        return celeridad;
-    }
-
-    public void setCeleridad(double celeridad) {
-        this.celeridad = celeridad;
-    }
+  
 
     public int getDañoCritico() {
         return dañoCritico;
@@ -68,7 +65,7 @@ public class DPS extends Campeon {
     }
 
     public String infoDPS() {
-        return "DPS/INFO \n------------" + "\n Tipo=" + tipoGolpe + "\n Celeridad=" + celeridad + " Puntos" + "\n DañoCritico=" + dañoCritico + " Puntos" + "\n ProbCritico=" + probCritico + " Puntos" + "\n PenetracionArmadura=" + penetracionArmadura + " Puntos" + "\n Energia= " + energia + " Puntos" + "\n------------";
+        return "DPS/INFO \n------------" + "\n Tipo=" + tipoGolpe  + "\n DañoCritico=" + dañoCritico + " Puntos" + "\n ProbCritico=" + probCritico + " Puntos" + "\n PenetracionArmadura=" + penetracionArmadura + " Puntos" + "\n Energia= " + energia + " Puntos" + "\n------------";
     }
 
     //HABILIDADES GENÉRICAS
@@ -77,11 +74,20 @@ public class DPS extends Campeon {
         int tmp = ((super.getGolpe() * 50) / 100);
         if (energia > 100) {
             super.setGolpe(super.getGolpe() + tmp);
-            System.out.println(super.getName() + "aumenta su golpe   " + tmp + " puntos ");
+            System.out.println(super.getName() + " aumenta su golpe   " + tmp + " puntos ");
         } else {
             System.out.println("No hay energía suficiente");
         }
         return tmp;
+    }
+    
+    //Ruptura
+    public void Ruptura(Enemigo enemigo){
+        int tmp = (super.getGolpe()*110)/100;
+        int sangrado = (super.getGolpe()*40)/100;
+        enemigo.setHp(enemigo.getHp()-tmp);
+        System.out.println(super.getName()+" desgarra a su rival inflingiendole "+tmp+" puntos de vida");
+        System.out.println(super.getName()+" aplica efectos de Sangrado a "+enemigo.getNombre()+" inflingiendole "+sangrado+" puntos de vida cada turno");
     }
 
     //Polimorfismo

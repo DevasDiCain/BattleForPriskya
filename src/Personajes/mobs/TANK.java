@@ -1,3 +1,9 @@
+package Personajes.mobs;
+
+
+import Personajes.mobs.Enemigo;
+import Personajes.mobs.Campeon;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -16,14 +22,15 @@ public class TANK extends Campeon {
     private int regVida;// Puntos de vida regenerados por turno
     private int aggro;// Recurso de los tankes. Si tienen más de 100 puntos de Aggro no se podrá atacar a otro campeón que no sea el. Cada golpe resta 50 puntos de Aggro
 
-    public TANK(int defensa, int esquivar, int parada, int regVida, int aggro, String name, String faccion, int hp, int exp, int nivel, int poder, int muertesEnemigas, int muertes, int golpe, int armadura) {
-        super(name, faccion, hp, exp, nivel, poder, muertesEnemigas, muertes, golpe, armadura);
+    public TANK(int defensa, int esquivar, int parada, int regVida, int aggro, String name, String faccion, int hp, int exp, int nivel, int poder, int muertesEnemigas, int muertes, int golpe, int armadura, double celeridad) {
+        super(name, faccion, hp, exp, nivel, poder, muertesEnemigas, muertes, golpe, armadura, celeridad);
         this.defensa = defensa;
         this.esquivar = esquivar;
         this.parada = parada;
         this.regVida = regVida;
         this.aggro = aggro;
     }
+
 
     
 
