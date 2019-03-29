@@ -98,4 +98,19 @@ public class BOSS extends Enemigo {
         }else {System.out.println("El boss no tiene la rabia suficiente");}
     }
     
+    
+    //Skills Boss
+    
+    public void temblor(Campeon enemigo){
+        System.out.println(super.getNombre()+" golpea el suelo bajo sus pies y hace temblar todo");
+        int tmp=super.getGolpe()-(enemigo.getArmadura()*10)/100;
+        enemigo.setHp(tmp);
+        System.out.println(enemigo.getName()+" sufre "+tmp+" puntos de daño" );
+        int decrease = enemigo.getArmadura()-((super.getGolpe()*10)/100);
+        enemigo.setArmadura(decrease);
+        System.out.println(super.getNombre()+" reduce la defensa de "+enemigo.getName()+" en "+decrease+" puntos");
+        
+    }
+    
+   
 }
