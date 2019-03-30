@@ -5,6 +5,7 @@
  */
 package Juego;
 //Bases del juego
+import control.Teclado;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Dimension;
@@ -29,12 +30,17 @@ public class Juego extends Canvas implements Runnable {
     
     private JFrame ventana;//JFrame que será la ventana
     private Thread thread;
+    private Teclado teclado;
     
     private static volatile boolean enFuncionamiento = false;//Nos dice si el juego está funcionando o no.//// VOLATILE impide que se pueda utilizar esta variable por varios Thread
 
     //Constructor
     public Juego() {
         setPreferredSize(new Dimension(ANCHO, ALTO));//Da un tamaño a nuestra ventana
+        
+        teclado= new Teclado();
+        addKeyListener(teclado);//Esto le dice a java que detecte todas las teclas pulsadas dentro de CANVAS
+        
         ventana = new JFrame(NOMBRE);//Instanciamos la ventana y le damos un nombre
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//Opcion por defecto para cerrar la ventana
         ventana.setResizable(false);//Impedir el reajuste de la pantalla
@@ -68,6 +74,20 @@ public class Juego extends Canvas implements Runnable {
     }
 
     private void actualizar() {//Aquí vendrá todo lo necesario para actualizar las variables del juego como la posicion del jugador , los stats ,etc...
+        teclado.actualizar();
+        
+        if(teclado.arriba){//Aquí codificamos lo que se debe hacer cuando se pulse la tecla W
+            System.out.println("ARRIBA");
+        }
+        if(teclado.abajo){//Aquí codificamos lo que se debe hacer cuando se pulse la tecla S
+            System.out.println("ABAJO");
+        }
+        if(teclado.izquierda){//Aquí codificamos lo que se debe hacer cuando se pulse la tecla A
+            System.out.println("IZQUIERDA");
+        }
+        if(teclado.derecha){//Aquí codificamos lo que se debe hacer cuando se pulse la tecla D
+            System.out.println("DERECHA");
+        }
         aps++;
     }
 
@@ -87,6 +107,9 @@ public class Juego extends Canvas implements Runnable {
         double delta = 0   ;//La cantidad de tiempo que ha transcurrido hasta que se ejecuta una actualizacion
         //System.nanotime()----Método que controla las veces que se actualiza tanto las variables como el juego
         //Si no lo usamos la experiencia de juego se vería afectada por el sistema que lo ejecutase
+        
+        requestFocus();//Así evitamos tener que clicar dentro de la pantalla para poder interactuar con ella 
+        
         while (enFuncionamiento = true) {
             final long inicioBucle = System.nanoTime();//Momento exacto en el que se genera el bucle
             
@@ -104,7 +127,7 @@ public class Juego extends Canvas implements Runnable {
             mostrar();
             
             if(System.nanoTime()-referenciaContador > NS_POR_SEGUNDO){//Cada segundo se mostrará por ventana
-                ventana.setTitle(NOMBRE+" || APS: "+aps+" || FPS: "+fps);//Los FPS
+                ventana.setTitle(NOMBRE+"                                                 || APS: "+aps+" || FPS: "+fps+"||");//Los FPS
                 aps=0;//Reiniciamos los FPS Y LAS APS
                 fps=0;//Si no el numero crecería hasta el infinito
                 referenciaContador=System.nanoTime();//Nueva mediciion del tiempo
