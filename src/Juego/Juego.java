@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Juego;
-
+//Bases del juego
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Dimension;
