@@ -91,15 +91,19 @@ public class Juego extends Canvas implements Runnable {
         teclado.actualizar();
         
         if(teclado.arriba){//Aquí codificamos lo que se debe hacer cuando se pulse la tecla W
+            y++;
             System.out.println("ARRIBA");
         }
         if(teclado.abajo){//Aquí codificamos lo que se debe hacer cuando se pulse la tecla S
+            y--;
             System.out.println("ABAJO");
         }
         if(teclado.izquierda){//Aquí codificamos lo que se debe hacer cuando se pulse la tecla A
+            x++;
             System.out.println("IZQUIERDA");
         }
         if(teclado.derecha){//Aquí codificamos lo que se debe hacer cuando se pulse la tecla D
+            x--;
             System.out.println("DERECHA");
         }
         aps++;
@@ -117,7 +121,12 @@ public class Juego extends Canvas implements Runnable {
         pantalla.mostrar(x, y);
         System.arraycopy(pantalla.pixeles, 0, pixeles, 0, pixeles.length);//Esto nos permite copiar el array posicion por posicion de una manera menos costosa para el ordenador
         
-        Graphics g = estrategia.getDrawGraphics();
+        Graphics g = estrategia.getDrawGraphics();//Se dibujará el buffer
+        
+        g.drawImage(imagen, 0, 0, getWidth(), getHeight() , null);// Dibujamos...Indicamos desde donde se debe empezar a dibujar, el ancho de la imagen , el alto y   el observador lo pondremos en null
+        g.dispose();//Esto destruye la memoria que g estaba usando.
+        
+        estrategia.show();
        
         fps++;
     }
