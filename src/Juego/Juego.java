@@ -5,10 +5,15 @@
  */
 package Juego;
 //Bases del juego
+import Graficos.Pantalla;
 import control.Teclado;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferInt;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -28,15 +33,24 @@ public class Juego extends Canvas implements Runnable {
     private int aps=0;//Actualiaciones por segundo
     private int fps=0;//Frames por segundo 
     
-    private JFrame ventana;//JFrame que será la ventana
-    private Thread thread;
-    private Teclado teclado;
+    private static int x = 0;
+    private static int y = 0;
+    
+    private static JFrame ventana;//JFrame que será la ventana
+    private static Thread thread;
+    private static Teclado teclado;
+    private static Pantalla pantalla;
+    
+    private static BufferedImage imagen =  new BufferedImage(ANCHO,ALTO, BufferedImage.TYPE_INT_RGB);//Creamos una nueva imagen en buffer en blanco con el modo de color RGB(el que utilizan los monitores)
+    private static int [] pixeles = ((DataBufferInt)imagen.getRaster().getDataBuffer()).getData();//Accedemos a la imagen en forma de un array de pixeles. Esto nos devuelve un array de ints que representa a los pixeles de la imagen
     
     private static volatile boolean enFuncionamiento = false;//Nos dice si el juego está funcionando o no.//// VOLATILE impide que se pueda utilizar esta variable por varios Thread
 
     //Constructor
     public Juego() {
         setPreferredSize(new Dimension(ANCHO, ALTO));//Da un tamaño a nuestra ventana
+        
+        pantalla = new Pantalla(ANCHO,ALTO);
         
         teclado= new Teclado();
         addKeyListener(teclado);//Esto le dice a java que detecte todas las teclas pulsadas dentro de CANVAS
@@ -92,6 +106,19 @@ public class Juego extends Canvas implements Runnable {
     }
 
     private void mostrar() {//Metodos necesarios para ir redibujando nuestros graficos
+        BufferStrategy estrategia = getBufferStrategy();// Creamos un buffer, que no es mas que un espacio de memoria que almacena temporalmente lo que se va a mostrar así dividimos la operación de dibujar y actualizar en dos
+        
+        if(estrategia == null ){
+            createBufferStrategy(3);//Lo dividimos en 3 así    es mucho más rapido y "suave" a la hora de dibujar la pantalla y el sistema no se ahoga
+            return;
+        }
+        
+        pantalla.limpiar();
+        pantalla.mostrar(x, y);
+        System.arraycopy(pantalla.pixeles, 0, pixeles, 0, pixeles.length);//Esto nos permite copiar el array posicion por posicion de una manera menos costosa para el ordenador
+        
+        Graphics g = estrategia.getDrawGraphics();
+       
         fps++;
     }
 

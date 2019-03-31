@@ -18,6 +18,11 @@ public final class Sprite {
     private int y;//Eje vertical
 
     public int[] pixeles;
+    
+    //Colección de Sprites
+    
+     public static Sprite  cesped = new Sprite(32,0,0, HojaSprites.mapaSecreto);
+    //Fin de Colección de Sprites
 
     public Sprite(final int lado, final int columna, final int fila, final HojaSprites hoja) {
         this.lado = lado;

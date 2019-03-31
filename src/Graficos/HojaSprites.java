@@ -20,6 +20,11 @@ public class HojaSprites {
     private final int ANCHO;
     private final int ALTO;
     public final int[] pixeles;
+    
+    //Coleccion de hojas de Sprite
+    
+    public static HojaSprites mapaSecreto = new HojaSprites("/Recursos.texturas/Pantalla1.png",320,320);
+    //Fin de coleccion de hojas de Sprite
 
     public HojaSprites(final String ruta, final int ancho, final int alto) {//ruta será la ruta donde se encuentra la imagen x ejemplo c/home/imagenes/imagen.jpg
         this.ANCHO = ancho;

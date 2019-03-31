@@ -14,7 +14,12 @@ public class Pantalla {
     private final int ANCHO;
     private final int ALTO;
 
-    private final int[] pixeles;
+    public final int[] pixeles;
+    
+    //Temporal
+     private final int LADO_SPRITE=32;//Indica que tamaño tiene nuestro sprite
+     private final int MASCARA_SPRITE = LADO_SPRITE -1;//
+    //Fin Temporal
 
     public Pantalla(final int ancho, final int alto) {
         this.ALTO = alto;
@@ -42,6 +47,8 @@ public class Pantalla {
                     if(posicionX < 0  || posicionX >= ANCHO){
                         continue;
                     }
+                    
+                    pixeles[posicionX + posicionY * ANCHO] =  Sprite.cesped.pixeles[(x & MASCARA_SPRITE)+(y & MASCARA_SPRITE)* LADO_SPRITE];//Temporal
                 }
             }
     }
