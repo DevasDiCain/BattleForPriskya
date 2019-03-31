@@ -32,7 +32,7 @@ public final class Teclado implements KeyListener {//Implementamos el paquete Ke
 
     //Métodos implementados por KeyListener
     public void keyTyped(KeyEvent e) {//Pulsamos tecla sin soltarla
-      
+ 
 
     }
 
@@ -41,7 +41,7 @@ public final class Teclado implements KeyListener {//Implementamos el paquete Ke
     }
 
     public void keyReleased(KeyEvent e) {//Pulsar-Soltar
-         TECLAS[e.getKeyCode()]=true;//La tecla pulsada vuelve a False
+         TECLAS[e.getKeyCode()]=false;//La tecla pulsada vuelve a False
     }
 
     
