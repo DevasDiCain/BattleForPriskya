@@ -20,7 +20,7 @@ public final class Sprite {
     public int[] pixeles;
     
     //Colección de Sprites
-    
+    //Tamaño-Posicion X-PosicionY-hojadeSprites
      public static Sprite  cesped = new Sprite(32,0,0, HojaSprites.mapaSecreto);
     //Fin de Colección de Sprites
 

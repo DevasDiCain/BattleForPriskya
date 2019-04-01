@@ -10,9 +10,23 @@ package Combate;
  *
  * @author jose
  */
-public class Dot {
+public class Dot extends Habilidad {
     
         private String tipo;// Tipo de dot (veneno,corrupcion,sombra,fuego...)
-        private int cantidad;//Daño por segundo
+        private int dañoPorSegundo;//Daño por segundo
         private int duracion;//Turnos que durará
+
+    public Dot(String tipo, int dañoPorSegundo, int duracion, String nombre, int daño) {
+        super(nombre, daño);
+        this.tipo = tipo;
+        this.dañoPorSegundo = dañoPorSegundo;
+        this.duracion = duracion;
+    }
+    
+    
+
+
+  
+        
+        
 }
