@@ -128,7 +128,25 @@ public class Juego extends Canvas implements Runnable {
         g.dispose();//Esto destruye la memoria que g estaba usando.
 
         estrategia.show();
-
+        //TEMPORAL
+        teclado.actualizar();
+         if (teclado.arriba) {//Aquí codificamos lo que se debe hacer cuando se pulse la tecla W
+            y++;//Movimiento
+            System.out.println("ARRIBA");
+        }
+        if (teclado.abajo) {//Aquí codificamos lo que se debe hacer cuando se pulse la tecla S
+            y--;
+            System.out.println("ABAJO");
+        }
+        if (teclado.izquierda) {//Aquí codificamos lo que se debe hacer cuando se pulse la tecla A
+            x++;
+            System.out.println("IZQUIERDA");
+        }
+        if (teclado.derecha) {//Aquí codificamos lo que se debe hacer cuando se pulse la tecla D
+            x--;
+            System.out.println("DERECHA");
+        }
+        //FIN TEMPORAL
         fps++;
     }
 
@@ -155,12 +173,12 @@ public class Juego extends Canvas implements Runnable {
 
             delta += tiempoTranscurrido / NS_POR_SEGUNDO;
 
-            while (delta >= 1) {//Este bucle se ejecutará unas 60 veces por segundo (APS_OBJETIVO)
+            while (delta >= 0.5) {//Este bucle se ejecutará unas 60 veces por segundo (APS_OBJETIVO)
                 actualizar();
                 delta--;
             }
 
-            actualizar();
+            
             mostrar();
 
             if (System.nanoTime() - referenciaContador > NS_POR_SEGUNDO) {//Cada segundo se mostrará por ventana
