@@ -6,7 +6,7 @@
 
 /**
  *
- * @author peper
+ *@author José Rodríguez Fernández
  */
 public class Jugador {
     

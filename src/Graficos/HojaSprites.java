@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
 
 /**
  *
- * @author peper
+ *  @author José Rodríguez Fernández
  */
 public class HojaSprites {
 

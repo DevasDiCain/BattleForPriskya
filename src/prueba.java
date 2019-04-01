@@ -11,7 +11,7 @@ import Personajes.mobs.DPS;
 
 /**
  *
- * @author jose
+ @author José Rodríguez Fernández
  */
 public class prueba {
     public static void main(String[] args) {

@@ -7,7 +7,7 @@ package Graficos;
 
 /**
  *
- * @author José
+ * @author José Rodríguez Fernández
  */
 public class Pantalla {
 

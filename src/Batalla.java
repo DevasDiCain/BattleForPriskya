@@ -11,7 +11,7 @@ import Personajes.mobs.DPS;
 
 /**
  *
- * @author peper
+ * @author José Rodríguez Fernández
  */
 public class Batalla {
 

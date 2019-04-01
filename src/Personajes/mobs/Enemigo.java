@@ -12,7 +12,7 @@ import java.util.Random;
  */
 /**
  *
- * @author jose
+ * @author José Rodríguez Fernández
  */
 public class Enemigo {
 

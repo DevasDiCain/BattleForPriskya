@@ -10,7 +10,7 @@ import java.awt.event.KeyListener;
 
 /**
  *
- * @author peper
+ *@author José Rodríguez Fernández
  */
 public final class Teclado implements KeyListener {//Implementamos el paquete KeyListener
 

@@ -5,14 +5,40 @@
  */
 package Mapa;
 
+import Graficos.Pantalla;
+
 /**
  *
- * @author José
+ * @author José Rodríguez Fernández
  */
-public class Mapa {
+public  abstract class  Mapa {
+
+    private int ancho;
+    private int alto;
+
+    private int[] cuadros;//tiles
+
+    public Mapa(int ancho, int alto) {//Genera un mapa aleatorio
+        this.ancho = ancho;
+        this.alto = alto;
+
+        cuadros = new int[ancho * alto];
+        generarMapa();
+    }
+
+    public Mapa(String ruta) {//Genera un mapa previamente hecho
+        cargarMapa(ruta);
+    }
+
+    public void generarMapa() {
+    }
+
+    public void cargarMapa(String ruta) {
+    }
+    public void actualizar(){
     
-        private int ancho;
-        private int alto;
-        
-        private int [] cuadro;//tiles
+    }
+    public void mostrar(int compensacionX , int compensacionY  , Pantalla pantalla){
+    
+    }
 }

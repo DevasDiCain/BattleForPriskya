@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  */
 /**
  *
- * @author jose
+ *@author José Rodríguez Fernández
  */
 public class Escena {
 

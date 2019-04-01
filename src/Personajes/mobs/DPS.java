@@ -8,7 +8,7 @@ package Personajes.mobs;
 
 /**
  *
- * @author peper
+ * @author José Rodríguez Fernández
  */
 public class DPS extends Campeon {
 

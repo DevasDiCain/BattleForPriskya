@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author jose
+ *@author José Rodríguez Fernández
  */
 public class Historia {
     

@@ -12,7 +12,7 @@ import java.util.Objects;
 
 /**
  *
- * @author peper
+ * @author José Rodríguez Fernández
  */
 public abstract class Campeon {
     

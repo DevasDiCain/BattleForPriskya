@@ -7,7 +7,7 @@ package Graficos;
 
 /**
  *
- * @author peper
+ * @author José Rodríguez Fernández
  */
 public final class Sprite {
 

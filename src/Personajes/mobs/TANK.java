@@ -12,7 +12,7 @@ import Personajes.mobs.Campeon;
 
 /**
  *
- * @author peper
+ *@author José Rodríguez Fernández
  */
 public class TANK extends Campeon {
 
