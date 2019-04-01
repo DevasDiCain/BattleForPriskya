@@ -17,6 +17,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 /**
@@ -44,6 +45,7 @@ public class Juego extends Canvas implements Runnable {
 
     private static BufferedImage imagen = new BufferedImage(ANCHO, ALTO, BufferedImage.TYPE_INT_RGB);//Creamos una nueva imagen en buffer en blanco con el modo de color RGB(el que utilizan los monitores)
     private static int[] pixeles = ((DataBufferInt) imagen.getRaster().getDataBuffer()).getData();//Accedemos a la imagen en forma de un array de pixeles. Esto nos devuelve un array de ints que representa a los pixeles de la imagen
+    private static final ImageIcon icono = new ImageIcon(Juego.class.getResource("/Recursos/icono.png"));//Añadimos el icono que queramos 
 
     private static volatile boolean enFuncionamiento = false;//Nos dice si el juego está funcionando o no.//// VOLATILE impide que se pueda utilizar esta variable por varios Thread
 
@@ -59,6 +61,7 @@ public class Juego extends Canvas implements Runnable {
         ventana = new JFrame(NOMBRE);//Instanciamos la ventana y le damos un nombre
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//Opcion por defecto para cerrar la ventana
         ventana.setResizable(false);//Impedir el reajuste de la pantalla
+        ventana.setIconImage(icono.getImage());//Cambiamos el icono de nuestra ventana
         ventana.setLayout(new BorderLayout());  //Diseño de los bordes
         ventana.add(this, BorderLayout.CENTER);
         ventana.pack();//Impide que pasen cosas raras con el tamaño de la ventana
