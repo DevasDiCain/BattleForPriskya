@@ -132,23 +132,7 @@ public class Juego extends Canvas implements Runnable {
 
         estrategia.show();
         //TEMPORAL
-        teclado.actualizar();
-         if (teclado.arriba) {//Aquí codificamos lo que se debe hacer cuando se pulse la tecla W
-            y++;//Movimiento
-            System.out.println("ARRIBA");
-        }
-        if (teclado.abajo) {//Aquí codificamos lo que se debe hacer cuando se pulse la tecla S
-            y--;
-            System.out.println("ABAJO");
-        }
-        if (teclado.izquierda) {//Aquí codificamos lo que se debe hacer cuando se pulse la tecla A
-            x++;
-            System.out.println("IZQUIERDA");
-        }
-        if (teclado.derecha) {//Aquí codificamos lo que se debe hacer cuando se pulse la tecla D
-            x--;
-            System.out.println("DERECHA");
-        }
+        
         //FIN TEMPORAL
         fps++;
     }
@@ -156,7 +140,7 @@ public class Juego extends Canvas implements Runnable {
     public void run() {//Metodo que ejecutará el segundo Thread se inicia con el metodo Iniciar
         final int NS_POR_SEGUNDO = 1000000000;
         final byte APS_OBJETIVO = 60;//-128...127+...Cuanto mas bajo sea este numero mejor porque menos veces cargará el juego (si lo es demasiado estará lastrado)
-        final double NS_POR_ACTUALIACION = NS_POR_SEGUNDO / APS_OBJETIVO; //Descubrimos cuantnos nanosegundos deben transcurrir para que sigamos el objetivo de actualizar 60 veces por segundo
+        final double NS_POR_ACTUALIZACION = NS_POR_SEGUNDO / APS_OBJETIVO; //Descubrimos cuantnos nanosegundos deben transcurrir para que sigamos el objetivo de actualizar 60 veces por segundo
 
         long referenciaActualizacion = System.nanoTime();  //Guardamos en esta variable los nanossegundos exacto del momento en el que se genera el metodo
         long referenciaContador = System.nanoTime();// Contador para indicar los FPS
@@ -168,15 +152,15 @@ public class Juego extends Canvas implements Runnable {
 
         requestFocus();//Así evitamos tener que clicar dentro de la pantalla para poder interactuar con ella 
 
-        while (enFuncionamiento = true) {
+        while (enFuncionamiento) {
             final long inicioBucle = System.nanoTime();//Momento exacto en el que se genera el bucle
 
             tiempoTranscurrido = inicioBucle - referenciaActualizacion;//Tiempo transcurrido desde que se genera el bucle
             referenciaActualizacion = inicioBucle;
 
-            delta += tiempoTranscurrido / NS_POR_SEGUNDO;
+            delta += tiempoTranscurrido / NS_POR_ACTUALIZACION;
 
-            while (delta >= 0.5) {//Este bucle se ejecutará unas 60 veces por segundo (APS_OBJETIVO)
+            while (delta >= 1) {//Este bucle se ejecutará unas 60 veces por segundo (APS_OBJETIVO)
                 actualizar();
                 delta--;
             }
