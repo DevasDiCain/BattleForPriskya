@@ -5,6 +5,8 @@
  */
 package Graficos;
 
+import Mapa.cuadro.Cuadro;
+
 /**
  *
  * @author José Rodríguez Fernández
@@ -15,10 +17,10 @@ public class Pantalla {
     private final int ALTO;
 
     public final int[] pixeles;
-    
+
     //Temporal
-     private final int LADO_SPRITE=32;//Indica que tamaño tiene nuestro sprite
-     private final int MASCARA_SPRITE = LADO_SPRITE -1;//
+    private final int LADO_SPRITE = 32;//Indica que tamaño tiene nuestro sprite
+    private final int MASCARA_SPRITE = LADO_SPRITE - 1;//
     //Fin Temporal
 
     public Pantalla(final int ancho, final int alto) {
@@ -33,24 +35,39 @@ public class Pantalla {
             pixeles[i] = 0; //0 es equivalente al color Negro absoluto
         }
     }
-    
-    public void mostrar(final int compensacionX, final int compensacionY){//Este metodo se encargará de redibujar la pantalla
+
+    //Temporal
+    public void mostrar(final int compensacionX, final int compensacionY) {//Este metodo se encargará de redibujar la pantalla
         //La compensación será el movimiento de nuestro personaje(la ubicación en cada actualización)
-    
-            for(int y = 0 ;  y < ALTO ; y ++){//Este primer bucle redibujará la posicion Y  ,tomando eencuenta el alto
-                int posicionY = y + compensacionY;
-                if( posicionY < 0 || posicionY >= ALTO){
-                    continue;//Este comando  sale de esa vuelta del for Y y pasaría al bucle del for  X || Es para no salirnos del mapa
-                }
-                for (int x = 0 ; x < ANCHO ; x ++){//Este segundo bucle anidado redibujará la posición X, tomando encuenta el ancho
-                    int posicionX = x + compensacionX;
-                    if(posicionX < 0  || posicionX >= ANCHO){
-                        continue;
-                    }
-                    
-                    pixeles[posicionX + posicionY * ANCHO] =  Sprite.cesped.pixeles[(x & MASCARA_SPRITE)+(y & MASCARA_SPRITE)* LADO_SPRITE];//Temporal
-                }
+
+        for (int y = 0; y < ALTO; y++) {//Este primer bucle redibujará la posicion Y  ,tomando eencuenta el alto
+            int posicionY = y + compensacionY;
+            if (posicionY < 0 || posicionY >= ALTO) {
+                continue;//Este comando  sale de esa vuelta del for Y y pasaría al bucle del for  X || Es para no salirnos del mapa
             }
+            for (int x = 0; x < ANCHO; x++) {//Este segundo bucle anidado redibujará la posición X, tomando encuenta el ancho
+                int posicionX = x + compensacionX;
+                if (posicionX < 0 || posicionX >= ANCHO) {
+                    continue;
+                }
+
+                pixeles[posicionX + posicionY * ANCHO] = Sprite.CESPED.pixeles[(x & MASCARA_SPRITE) + (y & MASCARA_SPRITE) * LADO_SPRITE];
+            }
+        }
+    }
+    //FIN TEMPORAL
+
+    public void mostrarCuadro(int compensacionX, int compensacionY, Cuadro cuadro) {
+        for (int y = 0; y < cuadro.sprite.obtenerLado(); y++) {
+            int posicionY = y + compensacionY;
+            for (int x = 0; x < cuadro.sprite.obtenerLado(); x++) {
+                int posicionX = x + compensacionX;
+                if(posicionX < 0 || posicionX > ANCHO || posicionY < 0 || posicionY > ALTO){
+                    break;
+                }
+                pixeles[posicionX + posicionY * ANCHO] = cuadro.sprite.pixeles[x + y * cuadro.sprite.obtenerLado()];
+            }
+        }
     }
 
 }

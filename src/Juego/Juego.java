@@ -11,6 +11,7 @@ import Graficos.Pantalla;
 import control.Teclado;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
@@ -61,7 +62,7 @@ public class Juego extends Canvas implements Runnable {
 
         ventana = new JFrame(NOMBRE);//Instanciamos la ventana y le damos un nombre
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//Opcion por defecto para cerrar la ventana
-        ventana.setResizable(false);//Impedir el reajuste de la pantalla
+        ventana.setResizable(true);//Impedir el reajuste de la pantalla
         ventana.setIconImage(icono.getImage());//Cambiamos el icono de nuestra ventana
         ventana.setLayout(new BorderLayout());  //Diseño de los bordes
         ventana.add(this, BorderLayout.CENTER);

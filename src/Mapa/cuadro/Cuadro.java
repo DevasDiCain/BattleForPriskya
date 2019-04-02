@@ -5,6 +5,7 @@
  */
 package Mapa.cuadro;
 
+import Graficos.HojaSprites;
 import Graficos.Pantalla;
 import Graficos.Sprite;
 
@@ -18,6 +19,10 @@ public abstract class Cuadro {//Tiles
     private int y;
 
     public Sprite sprite;
+    
+    //Coleccion de cuadros
+    public static final Cuadro CESPED = new CuadroCesped(Sprite.CESPED);
+    //Fin de colección 
 
     public Cuadro(Sprite sprite) {
         this.sprite = sprite;

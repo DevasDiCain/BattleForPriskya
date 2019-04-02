@@ -21,7 +21,7 @@ public final class Sprite {
     
     //Colección de Sprites
     //Tamaño-Posicion X-PosicionY-hojadeSprites
-     public static Sprite  cesped = new Sprite(32,0,0, HojaSprites.mapaSecreto);
+     public static Sprite  CESPED = new Sprite(32,0,0, HojaSprites.mapaSecreto);
     //Fin de Colección de Sprites
 
     public Sprite(final int lado, final int columna, final int fila, final HojaSprites hoja) {
@@ -39,5 +39,9 @@ public final class Sprite {
                 pixeles[x + y * lado] = hoja.pixeles[(x + this.x) + (y + this.y) * hoja.getANCHO()];//x+y sería la coordenada del sprite pero como queremos empezar a atribuir valores al x , y de ese sprite tendremos que multiplicarlo por el lado
             }
         }
+    }
+    
+    public int obtenerLado(){
+        return lado;
     }
 }

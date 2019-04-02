@@ -13,10 +13,10 @@ import Graficos.Pantalla;
  */
 public  abstract class  Mapa {
 
-    private int ancho;
-    private int alto;
+    protected int ancho;
+    protected int alto;
 
-    private int[] cuadros;//tiles
+    protected int[] cuadros;//tiles
 
     public Mapa(int ancho, int alto) {//Genera un mapa aleatorio
         this.ancho = ancho;
@@ -30,7 +30,7 @@ public  abstract class  Mapa {
         cargarMapa(ruta);
     }
 
-    public void generarMapa() {
+    protected void generarMapa() {
     }
 
     public void cargarMapa(String ruta) {
