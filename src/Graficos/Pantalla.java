@@ -15,12 +15,14 @@ public class Pantalla {
 
     private final int ANCHO;
     private final int ALTO;
+    
+    private int diferenciaX;
+    private int diferenciaY;
 
     public final int[] pixeles;
 
     //Temporal
-    private final int LADO_SPRITE = 32;//Indica que tamaño tiene nuestro sprite
-    private final int MASCARA_SPRITE = LADO_SPRITE - 1;//
+    
     //Fin Temporal
 
     public Pantalla(final int ancho, final int alto) {
@@ -37,27 +39,13 @@ public class Pantalla {
     }
 
     //Temporal
-    public void mostrar(final int compensacionX, final int compensacionY) {//Este metodo se encargará de redibujar la pantalla
-        //La compensación será el movimiento de nuestro personaje(la ubicación en cada actualización)
-
-        for (int y = 0; y < ALTO; y++) {//Este primer bucle redibujará la posicion Y  ,tomando eencuenta el alto
-            int posicionY = y + compensacionY;
-            if (posicionY < 0 || posicionY >= ALTO) {
-                continue;//Este comando  sale de esa vuelta del for Y y pasaría al bucle del for  X || Es para no salirnos del mapa
-            }
-            for (int x = 0; x < ANCHO; x++) {//Este segundo bucle anidado redibujará la posición X, tomando encuenta el ancho
-                int posicionX = x + compensacionX;
-                if (posicionX < 0 || posicionX >= ANCHO) {
-                    continue;
-                }
-                pixeles[posicionX + posicionY * ANCHO] = Sprite.CESPED.pixeles[(x & MASCARA_SPRITE) + (y & MASCARA_SPRITE) * LADO_SPRITE];
-               
-            }
-        }
-    }
+    
     //FIN TEMPORAL
 
     public void mostrarCuadro(int compensacionX, int compensacionY, Cuadro cuadro) {
+        
+        compensacionX -= diferenciaX;
+        compensacionY -= diferenciaY;//Esto nos permite saber que desplazamiento ha tenido nuestro personaje respecto al mapa
         for (int y = 0; y < cuadro.sprite.obtenerLado(); y++) {
             int posicionY = y + compensacionY;
             for (int x = 0; x < cuadro.sprite.obtenerLado(); x++) {
@@ -69,7 +57,10 @@ public class Pantalla {
             }
         }
     }
-
+    public void estableceDiferencia(final int diferenciaX,final int diferenciaY){
+        this.diferenciaX = diferenciaX;
+        this.diferenciaY = diferenciaY;
+    }
     public int getANCHO() {
         return ANCHO;
     }

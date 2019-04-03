@@ -22,7 +22,7 @@ public final class Sprite {
     //Colección de Sprites
     //Tamaño-Posicion X-PosicionY-hojadeSprites
     public static Sprite VACIO = new Sprite(32,0);//Creamos un Sprite vacio
-     public static Sprite  CESPED = new Sprite(32,0,1, HojaSprites.mapaSecreto);//Creamos un sprite a partir de un Mapa de sprites
+     public static Sprite CESPED = new Sprite(32,0,1, HojaSprites.mapaSecreto);//Creamos un sprite a partir de un Mapa de sprites
      public static Sprite PARED_DORADA = new Sprite (32,0,0,HojaSprites.mapaSecreto);
     //Fin de Colección de Sprites
 

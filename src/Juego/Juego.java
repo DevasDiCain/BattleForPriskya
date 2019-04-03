@@ -8,6 +8,8 @@ package Juego;
 //Bases del juego
 
 import Graficos.Pantalla;
+import Mapa.Mapa;
+import Mapa.MapaGenerado;
 import control.Teclado;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
@@ -44,6 +46,8 @@ public class Juego extends Canvas implements Runnable {
     private static Thread thread;
     private static Teclado teclado;
     private static Pantalla pantalla;
+    
+    private static Mapa mapa;
 
     private static BufferedImage imagen = new BufferedImage(ANCHO, ALTO, BufferedImage.TYPE_INT_RGB);//Creamos una nueva imagen en buffer en blanco con el modo de color RGB(el que utilizan los monitores)
     private static int[] pixeles = ((DataBufferInt) imagen.getRaster().getDataBuffer()).getData();//Accedemos a la imagen en forma de un array de pixeles. Esto nos devuelve un array de ints que representa a los pixeles de la imagen
@@ -56,6 +60,8 @@ public class Juego extends Canvas implements Runnable {
         setPreferredSize(new Dimension(ANCHO, ALTO));//Da un tamaño a nuestra ventana
 
         pantalla = new Pantalla(ANCHO, ALTO);
+        
+        mapa = new MapaGenerado(128,128); //nº DE tiles
 
         teclado = new Teclado();
         addKeyListener(teclado);//Esto le dice a java que detecte todas las teclas pulsadas dentro de CANVAS
@@ -97,19 +103,19 @@ public class Juego extends Canvas implements Runnable {
         teclado.actualizar();
 
         if (teclado.arriba) {//Aquí codificamos lo que se debe hacer cuando se pulse la tecla W
-            y++;//Movimiento
+            y--;//Movimiento
             System.out.println("ARRIBA");
         }
         if (teclado.abajo) {//Aquí codificamos lo que se debe hacer cuando se pulse la tecla S
-            y--;
+            y++;
             System.out.println("ABAJO");
         }
         if (teclado.izquierda) {//Aquí codificamos lo que se debe hacer cuando se pulse la tecla A
-            x++;
+            x--;
             System.out.println("IZQUIERDA");
         }
         if (teclado.derecha) {//Aquí codificamos lo que se debe hacer cuando se pulse la tecla D
-            x--;
+            x++;
             System.out.println("DERECHA");
         }
         aps++;
@@ -124,7 +130,8 @@ public class Juego extends Canvas implements Runnable {
         }
 
         pantalla.limpiar();
-        pantalla.mostrar(x, y);
+        mapa.mostrar(x, y, pantalla);
+        
         System.arraycopy(pantalla.pixeles, 0, pixeles, 0, pixeles.length);//Esto nos permite copiar el array posicion por posicion de una manera menos costosa para el ordenador
 
         Graphics g = estrategia.getDrawGraphics();//Se dibujará el buffer

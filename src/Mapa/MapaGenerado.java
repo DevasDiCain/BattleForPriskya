@@ -1,4 +1,4 @@
-/*
+        /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -14,7 +14,7 @@ import java.util.Random;
  */
 public class MapaGenerado extends Mapa {
     
-    private final Random aleatorio = new Random();
+    private static final  Random aleatorio = new Random();
 
     public MapaGenerado(int ancho, int alto) {
         super(ancho, alto);

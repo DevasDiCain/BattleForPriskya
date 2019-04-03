@@ -12,7 +12,7 @@ import Mapa.cuadro.Cuadro;
  *
  * @author José Rodríguez Fernández
  */
-public  abstract class  Mapa {
+public abstract class Mapa {
 
     protected int ancho;
     protected int alto;
@@ -36,10 +36,32 @@ public  abstract class  Mapa {
 
     public void cargarMapa(String ruta) {
     }
-    public void actualizar(){
-    
+
+    public void actualizar() {
+
     }
-    public void mostrar(int compensacionX , int compensacionY  , Pantalla pantalla){
+
+    public Cuadro obtenCuadro(final int x, final int y) {
+        if(x < 0 || y < 0 || x >= ancho || y >= alto){
+            return Cuadro.VACIO;
+        }
+        switch (cuadros[x + y * ancho]) {
+            case 0:
+                return Cuadro.CESPED;
+            case 1:
+                return Cuadro.PARED_DORADA;
+            case 2:
+                return Cuadro.CESPED;
+            case 3:
+                return Cuadro.CESPED;
+
+            default:
+                return Cuadro.VACIO;
+        }
+        
+    }
+
+    public void mostrar(int compensacionX, int compensacionY, Pantalla pantalla) {
         //Bitshifting-> Nos permitrá mostrar mas frames por segundo
         //               Las operaciones matemáticas se harán a un ritmo bastante alto
         //               Las operaciones se realizan por transferencia de bits
@@ -49,18 +71,19 @@ public  abstract class  Mapa {
             Primero hacemos la division o la multiplicacion
         128/32 == 128 >> 5
         700/10 == 700 >> 7
-        */
+         */
+        pantalla.estableceDiferencia(compensacionX, compensacionY);
+        //Nos permitirá saber en que parte del mapa nos encontramos
         int oeste = compensacionX >> 5;//Lo divido entre 32 porque es el tamaño de cada tiles y así hacemos que el personaje se mueva por pixel y no por tile
-        int este = (compensacionX + pantalla.getANCHO())>> 5;
+        int este = (compensacionX + pantalla.getANCHO()) >> 5;
         int norte = compensacionY >> 5;
-        int sur =(compensacionY + pantalla.getALTO()) >> 5 ;
+        int sur = (compensacionY + pantalla.getALTO()) >> 5;
+
+        for (int y = norte; y < sur; y++) {
+            for (int x = oeste; x < este; x++) {//Recorremos todo el vector de tiles para decidir que tile está en cada sitio
+                obtenCuadro(x, y).mostrar(x, y, pantalla);
+            }
+        }
     }
-    public Cuadro obtenCuadro(int x , int y){
-        switch (x+y*ancho){
-            case 0: return Cuadro.CESPED;
-            
-            
-            default: return null;
-    }
-    }
+
 }

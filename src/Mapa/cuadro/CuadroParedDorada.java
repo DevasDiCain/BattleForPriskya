@@ -12,14 +12,17 @@ import Graficos.Sprite;
  *
  * @author José
  */
-public class CuadroVacio extends Cuadro {
-
-    public CuadroVacio(Sprite sprite) {
+public class CuadroParedDorada extends Cuadro{
+    
+     public CuadroParedDorada(Sprite sprite) {
         super(sprite);
+        
     }
     
-     public void mostrar(int x , int y , Pantalla pantalla){
-       
+    public void mostrar(int x , int y , Pantalla pantalla){
+        
     }
     
+    
+   
 }

@@ -21,8 +21,9 @@ public abstract class Cuadro {//Tiles
     public Sprite sprite;
     
     //Coleccion de cuadros
-    public static final Cuadro VACIO = new CuadroVacio(Sprite.VACIO);//Asignamos al cuadro el sprite Vacio
+   
     public static final Cuadro CESPED = new CuadroCesped(Sprite.CESPED);
+    public static final Cuadro PARED_DORADA = new CuadroParedDorada(Sprite.PARED_DORADA);
     //Fin de colección 
 
     public Cuadro(Sprite sprite) {
@@ -30,7 +31,7 @@ public abstract class Cuadro {//Tiles
     }
     
     public void mostrar(int x  , int y , Pantalla pantalla){
-        
+          pantalla.mostrarCuadro(x << 5, y << 5, this);//BitShifting x=<<   /==>>
     }
     
     public boolean solido(){
