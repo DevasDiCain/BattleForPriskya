@@ -39,6 +39,9 @@ public  abstract class  Mapa {
     
     }
     public void mostrar(int compensacionX , int compensacionY  , Pantalla pantalla){
-    
+        int oeste = compensacionX/32;//Lo divido entre 32 porque es el tamaño de cada tiles y así hacemos que el personaje se mueva por pixel y no por tile
+        int este = compensacionY ;
+        int norte;
+        int sur;
     }
 }

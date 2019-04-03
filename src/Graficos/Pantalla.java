@@ -70,4 +70,13 @@ public class Pantalla {
         }
     }
 
+    public int getANCHO() {
+        return ANCHO;
+    }
+
+    public int getALTO() {
+        return ALTO;
+    }
+    
+
 }
