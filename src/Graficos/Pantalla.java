@@ -50,8 +50,8 @@ public class Pantalla {
                 if (posicionX < 0 || posicionX >= ANCHO) {
                     continue;
                 }
-
                 pixeles[posicionX + posicionY * ANCHO] = Sprite.CESPED.pixeles[(x & MASCARA_SPRITE) + (y & MASCARA_SPRITE) * LADO_SPRITE];
+               
             }
         }
     }

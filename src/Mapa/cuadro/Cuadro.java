@@ -21,6 +21,7 @@ public abstract class Cuadro {//Tiles
     public Sprite sprite;
     
     //Coleccion de cuadros
+    public static final Cuadro VACIO = new CuadroVacio(Sprite.VACIO);//Asignamos al cuadro el sprite Vacio
     public static final Cuadro CESPED = new CuadroCesped(Sprite.CESPED);
     //Fin de colección 
 

@@ -12,7 +12,7 @@ package Graficos;
 public final class Sprite {
 
     private final int lado;
-    private final HojaSprites hoja;
+    private  HojaSprites hoja;
 
     private int x;//Eje horizontal
     private int y;//Eje vertical
@@ -21,10 +21,12 @@ public final class Sprite {
     
     //Colección de Sprites
     //Tamaño-Posicion X-PosicionY-hojadeSprites
-     public static Sprite  CESPED = new Sprite(32,0,0, HojaSprites.mapaSecreto);
+    public static Sprite VACIO = new Sprite(32,0);//Creamos un Sprite vacio
+     public static Sprite  CESPED = new Sprite(32,0,1, HojaSprites.mapaSecreto);//Creamos un sprite a partir de un Mapa de sprites
+     public static Sprite PARED_DORADA = new Sprite (32,0,0,HojaSprites.mapaSecreto);
     //Fin de Colección de Sprites
 
-    public Sprite(final int lado, final int columna, final int fila, final HojaSprites hoja) {
+    public Sprite(final int lado, final int columna, final int fila,  HojaSprites hoja) {
         this.lado = lado;
         this.hoja = hoja;
         this.pixeles = new int[lado * lado];
@@ -40,6 +42,14 @@ public final class Sprite {
             }
         }
     }
+    public Sprite(final int lado, final int color){
+        this.lado = 0;
+        this.pixeles = new int [lado * lado];
+        
+        for (int i = 0 ; i < pixeles.length; i++){
+            pixeles[i]=color;
+        }
+    }   
     
     public int obtenerLado(){
         return lado;

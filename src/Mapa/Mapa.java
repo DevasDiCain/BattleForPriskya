@@ -6,6 +6,7 @@
 package Mapa;
 
 import Graficos.Pantalla;
+import Mapa.cuadro.Cuadro;
 
 /**
  *
@@ -39,9 +40,27 @@ public  abstract class  Mapa {
     
     }
     public void mostrar(int compensacionX , int compensacionY  , Pantalla pantalla){
-        int oeste = compensacionX/32;//Lo divido entre 32 porque es el tamaño de cada tiles y así hacemos que el personaje se mueva por pixel y no por tile
-        int este = compensacionY ;
-        int norte;
-        int sur;
+        //Bitshifting-> Nos permitrá mostrar mas frames por segundo
+        //               Las operaciones matemáticas se harán a un ritmo bastante alto
+        //               Las operaciones se realizan por transferencia de bits
+        /*
+            128   64    32    16    8     4    2    1    0
+            0      0     0     0    0     0    0    0    0
+            Primero hacemos la division o la multiplicacion
+        128/32 == 128 >> 5
+        700/10 == 700 >> 7
+        */
+        int oeste = compensacionX >> 5;//Lo divido entre 32 porque es el tamaño de cada tiles y así hacemos que el personaje se mueva por pixel y no por tile
+        int este = (compensacionX + pantalla.getANCHO())>> 5;
+        int norte = compensacionY >> 5;
+        int sur =(compensacionY + pantalla.getALTO()) >> 5 ;
+    }
+    public Cuadro obtenCuadro(int x , int y){
+        switch (x+y*ancho){
+            case 0: return Cuadro.CESPED;
+            
+            
+            default: return null;
+    }
     }
 }
